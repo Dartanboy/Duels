@@ -67,8 +67,9 @@ public class Arena {
 	 */
 	public void end(Player winner, Player loser) {
 		winner.sendMessage(ChatColor.GREEN + "You won the duel!");
-		loser.sendMessage(ChatColor.RED + "You lost the duel.");
+		plugin.getStatUtils().addWin(winner);
 		PlayerRestorationInfo pri = new PlayerRestorationInfo(null);
+		loser.sendMessage(ChatColor.RED + "You lost the duel.");
 		for(PlayerRestorationInfo priL : PlayerRestorationInfo.pris) {
 			if(priL.getPlayer().getName().equals(winner.getName())) {
 				pri = priL;

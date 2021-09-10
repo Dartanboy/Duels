@@ -2,9 +2,13 @@ package main.dartanman.duels;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
@@ -17,6 +21,7 @@ import main.dartanman.duels.arenas.ArenaManager;
 import main.dartanman.duels.commands.DuelCmd;
 import main.dartanman.duels.events.ArenaEvents;
 import main.dartanman.duels.kits.KitManager;
+import main.dartanman.duels.utils.StatUtils;
 
 /**
  * Main - The Main class of Duels
@@ -24,8 +29,12 @@ import main.dartanman.duels.kits.KitManager;
  */
 public class Main extends JavaPlugin{
 	
+	private FileConfiguration statsFile = new YamlConfiguration();
+	private File statsF;
+	
 	private ArenaManager arenaManager;
 	private KitManager kitManager;
+	private StatUtils statUtils;
 	
 	/**
 	 * Enables the plugin
@@ -33,10 +42,70 @@ public class Main extends JavaPlugin{
 	public void onEnable() {
 		getConfig().options().copyDefaults(true);
 		saveConfig();
+		createFiles();
 		arenaManager = new ArenaManager(this);
 		kitManager = new KitManager(this);
+		statUtils = new StatUtils(this);
 		getCommand("duels").setExecutor(new DuelCmd(this));
 		getServer().getPluginManager().registerEvents(new ArenaEvents(this), this);
+	}
+	
+	/**
+	 * Get the stats file
+	 * @return
+	 *   The stats file
+	 */
+	public FileConfiguration getStatsFile() {
+		return statsFile;
+	}
+	
+	/**
+	 * Save the stats file
+	 */
+	public void saveStatsFile() {
+		try {
+			statsFile.save(statsF);
+		}catch(IOException e) {
+			e.printStackTrace();
+			getLogger().warning("Failed to save Stats.yml");
+		}
+	}
+	
+	/**
+	 * Create necessary files. Right now, just Stats.yml
+	 */
+	private void createFiles() {
+		statsF = new File(getDataFolder(), "Stats.yml");
+		saveRes(statsF, "Stats.yml");
+		statsFile = new YamlConfiguration();
+		try {
+			statsFile.load(statsF);
+		} catch (IOException | InvalidConfigurationException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Save resource with a few more steps
+	 * @param file
+	 *   File to save
+	 * @param name
+	 *   Name to save it as
+	 */
+	private void saveRes(File file, String name) {
+		if(!file.exists()) {
+			file.getParentFile().mkdirs();
+			saveResource(name, false);
+		}
+	}
+	
+	/**
+	 * Returns the StatUtils
+	 * @return
+	 *   The StatUtils
+	 */
+	public StatUtils getStatUtils() {
+		return statUtils;
 	}
 	
 	/**
