@@ -21,6 +21,7 @@ import main.dartanman.duels.arenas.ArenaManager;
 import main.dartanman.duels.commands.DuelCmd;
 import main.dartanman.duels.events.ArenaEvents;
 import main.dartanman.duels.kits.KitManager;
+import main.dartanman.duels.utils.LeaderboardUtils;
 import main.dartanman.duels.utils.StatUtils;
 
 /**
@@ -35,6 +36,7 @@ public class Main extends JavaPlugin{
 	private ArenaManager arenaManager;
 	private KitManager kitManager;
 	private StatUtils statUtils;
+	private LeaderboardUtils lbUtils;
 	
 	/**
 	 * Enables the plugin
@@ -46,6 +48,7 @@ public class Main extends JavaPlugin{
 		arenaManager = new ArenaManager(this);
 		kitManager = new KitManager(this);
 		statUtils = new StatUtils(this);
+		lbUtils = new LeaderboardUtils(this);
 		getCommand("duels").setExecutor(new DuelCmd(this));
 		getServer().getPluginManager().registerEvents(new ArenaEvents(this), this);
 	}
@@ -97,6 +100,15 @@ public class Main extends JavaPlugin{
 			file.getParentFile().mkdirs();
 			saveResource(name, false);
 		}
+	}
+	
+	/**
+	 * Returns the LeaderboardUtils
+	 * @return
+	 *   LeaderboardUtils
+	 */
+	public LeaderboardUtils getLBUtils() {
+		return lbUtils;
 	}
 	
 	/**

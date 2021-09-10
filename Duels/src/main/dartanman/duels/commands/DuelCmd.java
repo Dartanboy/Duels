@@ -44,6 +44,9 @@ public class DuelCmd implements CommandExecutor{
 		if(player.hasPermission("duels.join"))
 			player.sendMessage(ChatColor.GOLD + "/" + label + " join " + ChatColor.WHITE + "- " + ChatColor.YELLOW +
 					"Join a duel if there are arenas available");
+		if(player.hasPermission("duels.leaderboard"))
+			player.sendMessage(ChatColor.GOLD + "/" + label + " leaderboard " + ChatColor.WHITE + "- " + ChatColor.YELLOW +
+					"Show the players with the top 10 amount of wins");
 		if(player.hasPermission("duels.arenas.create"))
 			player.sendMessage(ChatColor.GOLD + "/" + label + " arenas create <arenaName> " + ChatColor.WHITE + "- " + ChatColor.YELLOW +
 					"Create an arena called <arenaName>");
@@ -101,6 +104,19 @@ public class DuelCmd implements CommandExecutor{
 					}
 				}
 				player.sendMessage(ChatColor.RED + "No available arenas! Try again later.");
+				return true;
+			}else if(args[0].equalsIgnoreCase("leaderboard") || args[0].equalsIgnoreCase("lb") || args[0].equalsIgnoreCase("top")) {
+				if(!player.hasPermission("duels.leaderboard")) {
+					player.sendMessage(ChatColor.RED + "Insufficient permissions.");
+					return true;
+				}
+				List<String> lb = plugin.getLBUtils().createLeaderboard();
+				int i = 1;
+				player.sendMessage(ChatColor.BLUE + "Duels Wins Leaderboard" + ChatColor.WHITE + ":");
+				for(String s : lb) {
+					player.sendMessage(i + ". " + s);
+					i++;
+				}
 				return true;
 			}else {
 				player.sendMessage(ChatColor.RED + "Incorrect args. Try /" + label + " help");

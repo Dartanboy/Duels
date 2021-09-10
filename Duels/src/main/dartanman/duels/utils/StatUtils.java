@@ -32,7 +32,8 @@ public class StatUtils {
 	public void addWin(Player player) {
 		UUID uuid = player.getUniqueId();
 		String uuidStr = uuid.toString();
-		plugin.getStatsFile().set("Wins." + uuidStr, getWins(player));
+		plugin.getStatsFile().set("Wins." + uuidStr, getWins(player) + 1);
+		plugin.saveStatsFile();
 	}
 	
 	/**
