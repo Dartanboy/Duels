@@ -42,8 +42,11 @@ public class Main extends JavaPlugin{
 	 * Enables the plugin
 	 */
 	public void onEnable() {
+		int pluginId = 12801; // <-- Replace with the id of your plugin!
+        Metrics metrics = new Metrics(this, pluginId);
 		getConfig().options().copyDefaults(true);
 		saveConfig();
+		
 		createFiles();
 		arenaManager = new ArenaManager(this);
 		kitManager = new KitManager(this);
