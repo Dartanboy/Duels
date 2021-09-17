@@ -122,8 +122,13 @@ public class Arena {
 	 */
 	public boolean containsPlayer(Player player) {
 		for(Player p : players) {
-			if(p.getName().equals(player.getName())) {
-				return true;
+			try {
+				if(p.getName().equals(player.getName())) {
+					return true;
+				}
+			}catch(NullPointerException e) {
+				// null is not the player
+				continue;
 			}
 		}
 		return false;

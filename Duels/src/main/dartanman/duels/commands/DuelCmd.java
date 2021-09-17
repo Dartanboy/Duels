@@ -42,8 +42,8 @@ public class DuelCmd implements CommandExecutor{
 		player.sendMessage(ChatColor.GOLD + "/" + label + " help " + ChatColor.WHITE + "- " + ChatColor.YELLOW +
 				"Shows this help menu.");
 		if(player.hasPermission("duels.join"))
-			player.sendMessage(ChatColor.GOLD + "/" + label + " join " + ChatColor.WHITE + "- " + ChatColor.YELLOW +
-					"Join a duel if there are arenas available");
+			player.sendMessage(ChatColor.GOLD + "/" + label + " join [arena] " + ChatColor.WHITE + "- " + ChatColor.YELLOW +
+					"Join a duel if there are arenas available. You may specify an arena.");
 		if(player.hasPermission("duels.leaderboard"))
 			player.sendMessage(ChatColor.GOLD + "/" + label + " leaderboard " + ChatColor.WHITE + "- " + ChatColor.YELLOW +
 					"Show the players with the top 10 amount of wins");
@@ -92,6 +92,11 @@ public class DuelCmd implements CommandExecutor{
 					player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.NoPermissionMessage")));
 					return true;
 				}
+				Arena check = plugin.getArenaManager().getArena(player);
+				if(check != null) {
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.AlreadyInDuelMessage")));
+					return true;
+				}
 				player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.AttemptJoinMessage")));
 				for(Arena arena : plugin.getArenaManager().getArenaList()) {
 					if(!arena.getActive()) {
@@ -138,6 +143,30 @@ public class DuelCmd implements CommandExecutor{
 				}else {
 					player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.IncorrectArgsMessage")));
 					return true;
+				}
+			}else if(args[0].equalsIgnoreCase("join")) {
+				Arena check = plugin.getArenaManager().getArena(player);
+				if(check != null) {
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.AlreadyInDuelMessage")));
+					return true;
+				}
+				String arenaName = args[1];
+				Arena arena = plugin.getArenaManager().getArena(arenaName);
+				if(arena == null) {
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.NoArenaByThatNameMessage")).replace("<arena>", arenaName));
+					return true;
+				}else {
+					if(arena.getActive()) {
+						player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.ThatArenaIsFullMessage")));
+						return true;
+					}else {
+						arena.addPlayer(player);
+						player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.JoinedMessage")).replace("<arena>", arena.getName()));
+						if(arena.canStart()) {
+							arena.start();
+						}
+						return true;
+					}
 				}
 			}else {
 				player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.IncorrectArgsMessage")));

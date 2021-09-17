@@ -15,6 +15,8 @@ Messages:
   DeleteKitMessage: '&aSuccessfully deleted &e<kit>&a!'
   CreateArenaMessage: '&aSuccessfully created an arena! Do not forget to set its spawns!'
   NoArenaByThatNameMessage: '&cThere is no arena called &e<arena>&c!'
+  ThatArenaIsFullMessage: '&cThat arena is not available right now! (It is full)'
+  AlreadyInDuelMessage: '&cYou are already in a duel! You cannot join another one yet. Finish your current duel first!'
 Kits:
   default:
   - "rO0ABXcEAAAAJHNyABpvcmcuYnVra2l0LnV0aWwuaW8uV3JhcHBlcvJQR+zxEm8FAgABTAADbWFw\r\
