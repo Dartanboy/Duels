@@ -66,10 +66,10 @@ public class Arena {
 	 *   The loser
 	 */
 	public void end(Player winner, Player loser) {
-		winner.sendMessage(ChatColor.GREEN + "You won the duel!");
+		winner.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.WinMessage")));
 		plugin.getStatUtils().addWin(winner);
 		PlayerRestorationInfo pri = new PlayerRestorationInfo(null);
-		loser.sendMessage(ChatColor.RED + "You lost the duel.");
+		loser.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.LoseMessage")));
 		for(PlayerRestorationInfo priL : PlayerRestorationInfo.pris) {
 			if(priL.getPlayer().getName().equals(winner.getName())) {
 				pri = priL;
@@ -92,7 +92,7 @@ public class Arena {
 		if(spawn1 == null || spawn2 == null) {
 			for(Player p : players) {
 				p.sendMessage(ChatColor.RED + "Unfortunately, this Arena has been set up incorrectly. Contact an Administrator to fix this!");
-				p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "(They forget to set the spawn points)");
+				p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "(They forgot to set the spawn points)");
 			}
 			players[0] = null;
 			players[1] = null;
@@ -102,7 +102,7 @@ public class Arena {
 		for(Player p : players) {
 			p.setGameMode(GameMode.ADVENTURE);
 			p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 60, 0));
-			p.sendMessage(ChatColor.BLUE + "PREPARE TO DUEL!");
+			p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.PrepareToDuelMessage")));
 			if(plugin.getKitManager().getKitMap().containsKey(p.getUniqueId())) {
 				plugin.getKitManager().giveKit(p, plugin.getKitManager().getKitMap().get(p.getUniqueId()));
 			}else {

@@ -75,7 +75,7 @@ public class DuelCmd implements CommandExecutor{
 	 */
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if(!(sender instanceof Player)) {
-			sender.sendMessage(ChatColor.RED + "You must be a Player to use this command!");
+			sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.NotAPlayerMessage")));
 			return true;
 		}
 		Player player = (Player) sender;
@@ -89,25 +89,25 @@ public class DuelCmd implements CommandExecutor{
 				return true;
 			}else if(args[0].equalsIgnoreCase("join")){
 				if(!player.hasPermission("duels.join")) {
-					player.sendMessage(ChatColor.RED + "Insufficient permissions.");
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.NoPermissionMessage")));
 					return true;
 				}
-				player.sendMessage(ChatColor.GREEN + "Attempting to join a duel...");
+				player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.AttemptJoinMessage")));
 				for(Arena arena : plugin.getArenaManager().getArenaList()) {
 					if(!arena.getActive()) {
 						arena.addPlayer(player);
-						player.sendMessage(ChatColor.GREEN + "Successfully joined \"" + arena.getName() + "\"");
+						player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.JoinedMessage")).replace("<arena>", arena.getName()));
 						if(arena.canStart()) {
 							arena.start();
 						}
 						return true;
 					}
 				}
-				player.sendMessage(ChatColor.RED + "No available arenas! Try again later.");
+				player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.NoArenaAvailableMessage")));
 				return true;
 			}else if(args[0].equalsIgnoreCase("leaderboard") || args[0].equalsIgnoreCase("lb") || args[0].equalsIgnoreCase("top")) {
 				if(!player.hasPermission("duels.leaderboard")) {
-					player.sendMessage(ChatColor.RED + "Insufficient permissions.");
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.NoPermissionMessage")));
 					return true;
 				}
 				List<String> lb = plugin.getLBUtils().createLeaderboard();
@@ -119,14 +119,14 @@ public class DuelCmd implements CommandExecutor{
 				}
 				return true;
 			}else {
-				player.sendMessage(ChatColor.RED + "Incorrect args. Try /" + label + " help");
+				player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.IncorrectArgsMessage")));
 				return true;	
 			}
 		}else if (args.length == 2) {
 			if(args[0].equalsIgnoreCase("kit") || args[0].equalsIgnoreCase("kits")) {
 				if(args[1].equalsIgnoreCase("list")) {
 					if(!player.hasPermission("duels.kits.list")) {
-						player.sendMessage(ChatColor.RED + "Insufficient permissions.");
+						player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.NoPermissionMessage")));
 						return true;
 					}
 					List<String> kitList = plugin.getKitManager().getKitNames();
@@ -136,75 +136,74 @@ public class DuelCmd implements CommandExecutor{
 					}
 					return true;
 				}else {
-					player.sendMessage(ChatColor.RED + "Incorrect args. Try /" + label + " help");
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.IncorrectArgsMessage")));
 					return true;
 				}
 			}else {
-				player.sendMessage(ChatColor.RED + "Incorrect args. Try /" + label + " help");
+				player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.IncorrectArgsMessage")));
 				return true;
 			}
 		}else if (args.length == 3) {
 			if(args[0].equalsIgnoreCase("kit") || args[0].equalsIgnoreCase("kits")) {
 				if(args[1].equalsIgnoreCase("create")) {
 					if(!player.hasPermission("duels.kits.create")) {
-						player.sendMessage(ChatColor.RED + "Insufficient permissions.");
+						player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.NoPermissionMessage")));
 						return true;
 					}
 					String kitName = args[2];
 					plugin.getKitManager().saveKit(player, kitName);
-					player.sendMessage(ChatColor.GREEN + "Created the kit called \"" + kitName.toLowerCase() + "\"");
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.CreateKitMessage")).replace("<kit>", kitName.toLowerCase()));
 					return true;
 				}else if(args[1].equalsIgnoreCase("select") || args[1].equalsIgnoreCase("equip")) {
 					if(!player.hasPermission("duels.kits.select")) {
-						player.sendMessage(ChatColor.RED + "Insufficient permissions.");
+						player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.NoPermissionMessage")));
 						return true;
 					}
 					String kitName = args[2];
 					if(!plugin.getKitManager().setKit(player, kitName)) {
-						player.sendMessage(ChatColor.RED + "There is no kit called \"" + kitName + "\"");
+						player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.NoKitByThatNameMessage")).replace("<kit>", kitName));
 						return true;
 					}else {
-						player.sendMessage(ChatColor.GREEN + "Kit \"" + kitName + "\" selected");
+						player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.SelectKitMessage")).replace("<kit>", kitName));
 						return true;
 					}
 				}else if(args[1].equalsIgnoreCase("delete")) {
 					if(!player.hasPermission("duels.kits.delete")) {
-						player.sendMessage(ChatColor.RED + "Insufficient permissions.");
+						player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.NoPermissionMessage")));
 						return true;
 					}
 					String kitName = args[2];
 					if(!plugin.getKitManager().deleteKit(kitName)) {
-						player.sendMessage(ChatColor.RED + "There is no kit called \"" + kitName + "\"");
+						player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.NoKitByThatNameMessage")).replace("<kit>", kitName));
 						return true;
 					}else {
-						player.sendMessage(ChatColor.GREEN + "Kit \"" + kitName + "\" deleted");
+						player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.DeleteKitMessage")).replace("<kit>", kitName));
 						return true;
 					}
 				}else {
-					player.sendMessage(ChatColor.RED + "Incorrect args. Try /" + label + " help");
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.IncorrectArgsMessage")));
 					return true;
 				}
 			}else if(args[0].equalsIgnoreCase("arena") || args[0].equalsIgnoreCase("arenas")) {
 				if(args[1].equalsIgnoreCase("create")) {
 					if(!player.hasPermission("duels.arenas.create")) {
-						player.sendMessage(ChatColor.RED + "Insufficient permissions.");
+						player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.NoPermissionMessage")));
 						return true;
 					}
 					String arenaName = args[2];
 					Arena arena = plugin.getArenaManager().createArena(arenaName);
 					plugin.getArenaManager().saveArenaToList(arena);
-					player.sendMessage(ChatColor.GREEN + "Arena \"" + arena.getName() + "\" successfully created.");
-					player.sendMessage(ChatColor.GREEN + "Do not forget to set its spawns! " + ChatColor.YELLOW + "/duels arena setspawn1 " + arena.getName());
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.CreateArenaMessage")));
 					return true;
 				}else if(args[1].equalsIgnoreCase("setspawn1")) {
 					if(!player.hasPermission("duels.arenas.setspawn")) {
-						player.sendMessage(ChatColor.RED + "Insufficient permissions.");
+						player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.NoPermissionMessage")));
 						return true;
 					}
 					String arenaName = args[2];
 					Arena arena = plugin.getArenaManager().getArena(arenaName);
 					if(arena == null) {
-						player.sendMessage(ChatColor.RED + "No arena called " + arenaName + " was found.");
+						player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.NoArenaByThatNameMessage")).replace("<arena>", arenaName));
 						return true;
 					}
 					arena.setSpawn1(player.getLocation());
@@ -213,13 +212,13 @@ public class DuelCmd implements CommandExecutor{
 					return true;
 				}else if(args[1].equalsIgnoreCase("setspawn2")) {
 					if(!player.hasPermission("duels.arenas.setspawn")) {
-						player.sendMessage(ChatColor.RED + "Insufficient permissions.");
+						player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.NoPermissionMessage")));
 						return true;
 					}
 					String arenaName = args[2];
 					Arena arena = plugin.getArenaManager().getArena(arenaName);
 					if(arena == null) {
-						player.sendMessage(ChatColor.RED + "No arena called " + arenaName + " was found.");
+						player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.NoArenaByThatNameMessage")).replace("<arena>", arenaName));
 						return true;
 					}
 					arena.setSpawn2(player.getLocation());
@@ -227,15 +226,15 @@ public class DuelCmd implements CommandExecutor{
 					plugin.getArenaManager().saveArenaToFile(arena);
 					return true;
 				}else {
-					player.sendMessage(ChatColor.RED + "Incorrect args. Try /" + label + " help");
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.IncorrectArgsMessage")));
 					return true;
 				}
 			}else {
-				player.sendMessage(ChatColor.RED + "Incorrect args. Try /" + label + " help");
+				player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.IncorrectArgsMessage")));
 				return true;
 			}
 		}else {
-			player.sendMessage(ChatColor.RED + "Incorrect args. Try /" + label + " help");
+			player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.IncorrectArgsMessage")));
 			return true;
 		}
 	}

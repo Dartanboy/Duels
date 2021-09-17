@@ -19,6 +19,7 @@ import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
 
 import main.dartanman.duels.arenas.ArenaManager;
 import main.dartanman.duels.commands.DuelCmd;
+import main.dartanman.duels.commands.DuelTabCompleter;
 import main.dartanman.duels.events.ArenaEvents;
 import main.dartanman.duels.kits.KitManager;
 import main.dartanman.duels.utils.LeaderboardUtils;
@@ -53,6 +54,7 @@ public class Main extends JavaPlugin{
 		statUtils = new StatUtils(this);
 		lbUtils = new LeaderboardUtils(this);
 		getCommand("duels").setExecutor(new DuelCmd(this));
+		getCommand("duels").setTabCompleter(new DuelTabCompleter());
 		getServer().getPluginManager().registerEvents(new ArenaEvents(this), this);
 	}
 	

@@ -1,5 +1,20 @@
 # Duels by Dartanman
 # Don't edit kits in the file... unless you're particularly confident in your ability to read/write in Base64!
+Messages:
+  WinMessage: '&aYou won the duel!'
+  LoseMessage: '&cYou lost the duel!'
+  PrepareToDuelMessage: '&1PREPARE TO DUEL!'
+  NotAPlayerMessage: '&cYou must be a Player to do that!'
+  NoPermissionMessage: '&cInsufficient permissions.'
+  AttemptJoinMessage: '&aAttempting to join a duel...'
+  JoinedMessage: '&aSuccessfully joined <arena>!'
+  IncorrectArgsMessage: '&cIncorrect args! Try &e/duels help'
+  CreateKitMessage: '&aSuccessfully created the kit called &e<kit>&a!'
+  NoKitByThatNameMessage: '&cThere is no kit called &e<kit>&c!'
+  SelectKitMessage: '&aSelected &e<kit>&a!'
+  DeleteKitMessage: '&aSuccessfully deleted &e<kit>&a!'
+  CreateArenaMessage: '&aSuccessfully created an arena! Do not forget to set its spawns!'
+  NoArenaByThatNameMessage: '&cThere is no arena called &e<arena>&c!'
 Kits:
   default:
   - "rO0ABXcEAAAAJHNyABpvcmcuYnVra2l0LnV0aWwuaW8uV3JhcHBlcvJQR+zxEm8FAgABTAADbWFw\r\
