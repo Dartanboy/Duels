@@ -1,5 +1,7 @@
 # Duels by Dartanman
 # Don't edit kits in the file... unless you're particularly confident in your ability to read/write in Base64!
+Settings:
+  ForceHealth: true
 Messages:
   WinMessage: '&aYou won the duel!'
   LoseMessage: '&cYou lost the duel!'

@@ -69,7 +69,11 @@ public class Arena {
 		winner.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.WinMessage")));
 		plugin.getStatUtils().addWin(winner);
 		PlayerRestorationInfo pri = new PlayerRestorationInfo(null);
-		loser.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.LoseMessage")));
+		try {
+			loser.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.LoseMessage")));	
+		}catch(NullPointerException e) {
+			// loser disconnected, they didn't die. As such, they are not here to be sent a message.
+		}
 		for(PlayerRestorationInfo priL : PlayerRestorationInfo.pris) {
 			if(priL.getPlayer().getName().equals(winner.getName())) {
 				pri = priL;
@@ -102,6 +106,10 @@ public class Arena {
 		for(Player p : players) {
 			p.setGameMode(GameMode.ADVENTURE);
 			p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 60, 0));
+			if(plugin.getConfig().getBoolean("Settings.ForceHealth")) {
+				p.setMaxHealth(20);
+				p.setHealth(20);
+			}
 			p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.PrepareToDuelMessage")));
 			if(plugin.getKitManager().getKitMap().containsKey(p.getUniqueId())) {
 				plugin.getKitManager().giveKit(p, plugin.getKitManager().getKitMap().get(p.getUniqueId()));

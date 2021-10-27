@@ -31,6 +31,11 @@ import main.dartanman.duels.utils.StatUtils;
  */
 public class Main extends JavaPlugin{
 	
+	/*
+	 * Changelog:
+	 * Tracks quits
+	 */
+	
 	private FileConfiguration statsFile = new YamlConfiguration();
 	private File statsF;
 	

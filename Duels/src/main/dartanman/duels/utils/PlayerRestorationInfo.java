@@ -24,6 +24,8 @@ public class PlayerRestorationInfo {
 	private ItemStack[] armorContents;
 	private int xpLevel;
 	private GameMode gameMode;
+	private double maxHealth;
+	private double currentHealth;
 	
 	/**
 	 * Constructs a new PlayerRestorationInfo object for the given player
@@ -47,6 +49,8 @@ public class PlayerRestorationInfo {
 		armorContents = player.getInventory().getArmorContents();
 		xpLevel = player.getLevel();
 		gameMode = player.getGameMode();
+		maxHealth = player.getMaxHealth();
+		currentHealth = player.getHealth();
 		pris.add(this);
 	}
 	
@@ -68,6 +72,8 @@ public class PlayerRestorationInfo {
 		getPlayer().getInventory().setArmorContents(armorContents);
 		getPlayer().setLevel(xpLevel);
 		getPlayer().setGameMode(gameMode);
+		getPlayer().setMaxHealth(maxHealth);
+		getPlayer().setHealth(currentHealth);
 	}
 
 }
