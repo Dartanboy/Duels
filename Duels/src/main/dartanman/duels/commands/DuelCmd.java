@@ -123,6 +123,24 @@ public class DuelCmd implements CommandExecutor{
 					i++;
 				}
 				return true;
+			}else if(args[0].equalsIgnoreCase("leave") || args[0].equalsIgnoreCase("quit")) {
+				if(!player.hasPermission("duels.leave")) {
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.NoPermissionMessage")));
+					return true;
+				}
+				Arena check = plugin.getArenaManager().getArena(player);
+				if(check == null) {
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.NotInDuelMessage")));
+					return true;
+				}else {
+					if(check.getActive()) {
+						player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.CannotLeaveDuelMessage")));
+						return true;
+					}
+					check.removePlayer(player);
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.LeftDuelMessage")));
+					return true;
+				}
 			}else {
 				player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Messages.IncorrectArgsMessage")));
 				return true;	
