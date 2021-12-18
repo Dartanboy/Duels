@@ -29,6 +29,12 @@ public class DuelTabCompleter implements TabCompleter{
 				arguments.add("list");
 				arguments.add("select");
 			}
+		}else if(args.length == 3) {
+			if(args[1].equalsIgnoreCase("arenas")) {
+				arguments.add("<arena>");
+			}else if(args[1].equalsIgnoreCase("kits")) {
+				arguments.add("<kit>");
+			}
 		}
 		return arguments;
 	}

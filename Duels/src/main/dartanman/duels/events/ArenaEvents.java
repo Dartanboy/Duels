@@ -80,11 +80,14 @@ public class ArenaEvents implements Listener{
 	@EventHandler
 	public void onRespawn(PlayerRespawnEvent event) {
 		Player player = event.getPlayer();
-		PlayerRestorationInfo pri = new PlayerRestorationInfo(null);
+		PlayerRestorationInfo pri = null;
 		for(PlayerRestorationInfo priL : PlayerRestorationInfo.pris) {
 			if(priL.getPlayer().getName().equals(player.getName())) {
 				pri = priL;
 			}
+		}
+		if(pri == null) {
+			return;
 		}
 		final PlayerRestorationInfo priF = pri;
 		Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
