@@ -1,8 +1,8 @@
 name: Duels
 author: Dartanman
 main: main.dartanman.duels.Main
-version: 3.0.8
-api-version: 1.16
+version: 3.0.9
+api-version: 1.18
 commands:
   duel:
     description: Duels base command
