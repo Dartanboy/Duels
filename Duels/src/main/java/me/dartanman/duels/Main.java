@@ -1,4 +1,4 @@
-package main.dartanman.duels;
+package me.dartanman.duels;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -17,13 +17,13 @@ import org.bukkit.util.io.BukkitObjectInputStream;
 import org.bukkit.util.io.BukkitObjectOutputStream;
 import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
 
-import main.dartanman.duels.arenas.ArenaManager;
-import main.dartanman.duels.commands.DuelCmd;
-import main.dartanman.duels.commands.DuelTabCompleter;
-import main.dartanman.duels.events.ArenaEvents;
-import main.dartanman.duels.kits.KitManager;
-import main.dartanman.duels.utils.LeaderboardUtils;
-import main.dartanman.duels.utils.StatUtils;
+import me.dartanman.duels.arenas.ArenaManager;
+import me.dartanman.duels.commands.DuelCmd;
+import me.dartanman.duels.commands.DuelTabCompleter;
+import me.dartanman.duels.events.ArenaEvents;
+import me.dartanman.duels.kits.KitManager;
+import me.dartanman.duels.utils.LeaderboardUtils;
+import me.dartanman.duels.utils.StatUtils;
 
 /**
  * Main - The Main class of Duels

@@ -1,4 +1,4 @@
-package main.dartanman.duels.utils;
+package me.dartanman.duels.utils;
 
 import java.util.ArrayList;
 import java.util.List;

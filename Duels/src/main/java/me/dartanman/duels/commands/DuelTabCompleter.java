@@ -1,4 +1,4 @@
-package main.dartanman.duels.commands;
+package me.dartanman.duels.commands;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,6 @@ import org.bukkit.command.TabCompleter;
 
 public class DuelTabCompleter implements TabCompleter{
 
-	@Override
 	public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
 		List<String> arguments = new ArrayList();
 		if(args.length == 1) {

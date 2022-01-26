@@ -1,11 +1,11 @@
-package main.dartanman.duels.utils;
+package me.dartanman.duels.utils;
 
 import java.util.Set;
 import java.util.UUID;
 
 import org.bukkit.entity.Player;
 
-import main.dartanman.duels.Main;
+import me.dartanman.duels.Main;
 
 /**
  * StatUtils - Utility class to edit stuff in Stats.yml

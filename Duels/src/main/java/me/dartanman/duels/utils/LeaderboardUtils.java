@@ -1,4 +1,4 @@
-package main.dartanman.duels.utils;
+package me.dartanman.duels.utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 
-import main.dartanman.duels.Main;
+import me.dartanman.duels.Main;
 
 /**
  * LeaderboardUtils - Utility class for showing a Wins leaderboard

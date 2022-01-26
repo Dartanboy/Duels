@@ -1,12 +1,12 @@
-package main.dartanman.duels.commands;
+package me.dartanman.duels.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import main.dartanman.duels.Main;
-import main.dartanman.duels.arenas.Arena;
+import me.dartanman.duels.Main;
+import me.dartanman.duels.arenas.Arena;
 
 import java.util.List;
 
