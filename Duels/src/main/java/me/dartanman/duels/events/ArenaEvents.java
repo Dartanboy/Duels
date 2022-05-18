@@ -73,7 +73,6 @@ public class ArenaEvents implements Listener{
 	public void onQuit(PlayerQuitEvent event) {
 		Player player = event.getPlayer();
 		UUID uuid = player.getUniqueId();
-		String uuidStr = uuid.toString();
 		// Currently unused, but will be used if/when I support Bungeecord.
 		boolean bungee = false;
 		if(bungee) {
