@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import me.dartanman.duels.Main;
+import me.dartanman.duels.Duels;
 
 /**
  * KitManager - Manages everything to do with kits
@@ -19,13 +19,13 @@ import me.dartanman.duels.Main;
  */
 public class KitManager {
 	
-	private Main plugin;
+	private Duels plugin;
 	
 	/**
 	 * Constructs a KitManager with access to the Main class
 	 * @param pl
 	 */
-	public KitManager(Main pl) {
+	public KitManager(Duels pl) {
 		plugin = pl;
 	}
 	
@@ -114,7 +114,7 @@ public class KitManager {
 	 *   Name of the newly created kit
 	 */
 	public void saveKit(Player player, String kitName) {
-		String[] kitToBase64 = Main.playerInventoryToBase64(player.getInventory());
+		String[] kitToBase64 = Duels.playerInventoryToBase64(player.getInventory());
 		plugin.getConfig().set("Kits." + kitName, kitToBase64);
 		plugin.saveConfig();
 		plugin.reloadConfig();
@@ -155,8 +155,8 @@ public class KitManager {
 		String contents = plugin.getConfig().getStringList("Kits." + kitName).get(0);
 		String armor = plugin.getConfig().getStringList("Kits." + kitName).get(1);
 		try {
-			Inventory inv = Main.fromBase64(contents);
-			ItemStack[] armors = Main.itemStackArrayFromBase64(armor);
+			Inventory inv = Duels.fromBase64(contents);
+			ItemStack[] armors = Duels.itemStackArrayFromBase64(armor);
 			player.getInventory().setContents(inv.getContents());
 			player.getInventory().setArmorContents(armors);
 			player.updateInventory();

@@ -9,7 +9,7 @@ import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-import me.dartanman.duels.Main;
+import me.dartanman.duels.Duels;
 import net.md_5.bungee.api.ChatColor;
 
 /**
@@ -19,7 +19,7 @@ import net.md_5.bungee.api.ChatColor;
 
 public class ArenaManager {
 	
-	private Main plugin;
+	private Duels plugin;
 	
 	private int nextID = 0;
 	
@@ -29,7 +29,7 @@ public class ArenaManager {
 	 * Constructs the ArenaManager with access to the Main class
 	 * @param pl
 	 */
-	public ArenaManager(Main pl) {
+	public ArenaManager(Duels pl) {
 		plugin = pl;
 		try {
 			loadAllArenasFromFile();	

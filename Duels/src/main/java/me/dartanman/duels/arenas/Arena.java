@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import me.dartanman.duels.Main;
+import me.dartanman.duels.Duels;
 import me.dartanman.duels.utils.PlayerRestorationInfo;
 
 import org.bukkit.ChatColor;
@@ -18,7 +18,7 @@ import org.bukkit.ChatColor;
  */
 public class Arena {
 	
-	private Main plugin;
+	private Duels plugin;
 	private int id;
 	private String name;
 	private Location spawn1;
@@ -33,7 +33,7 @@ public class Arena {
 	 * @param name
 	 *   The arena's name
 	 */
-	public Arena(int id, String name, Main pl) {
+	public Arena(int id, String name, Duels pl) {
 		this.id = id;
 		this.name = name;
 		plugin = pl;

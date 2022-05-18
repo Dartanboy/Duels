@@ -29,12 +29,7 @@ import me.dartanman.duels.utils.StatUtils;
  * Main - The Main class of Duels
  * @author Austin Dart (Dartanman)
  */
-public class Main extends JavaPlugin{
-	
-	/*
-	 * Changelog:
-	 * Tracks quits
-	 */
+public class Duels extends JavaPlugin{
 	
 	private FileConfiguration statsFile = new YamlConfiguration();
 	private File statsF;

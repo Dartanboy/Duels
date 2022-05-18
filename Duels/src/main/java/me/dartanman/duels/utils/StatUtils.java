@@ -5,7 +5,7 @@ import java.util.UUID;
 
 import org.bukkit.entity.Player;
 
-import me.dartanman.duels.Main;
+import me.dartanman.duels.Duels;
 
 /**
  * StatUtils - Utility class to edit stuff in Stats.yml
@@ -13,14 +13,14 @@ import me.dartanman.duels.Main;
  */
 public class StatUtils {
 	
-	private Main plugin;
+	private Duels plugin;
 	
 	/**
 	 * Constructs StatUtils
 	 * @param pl
 	 *   Main class
 	 */
-	public StatUtils(Main pl) {
+	public StatUtils(Duels pl) {
 		plugin = pl;
 	}
 	

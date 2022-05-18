@@ -8,7 +8,7 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 
-import me.dartanman.duels.Main;
+import me.dartanman.duels.Duels;
 
 /**
  * LeaderboardUtils - Utility class for showing a Wins leaderboard
@@ -16,9 +16,9 @@ import me.dartanman.duels.Main;
  */
 public class LeaderboardUtils {
 	
-	private Main plugin;
+	private Duels plugin;
 	
-	public LeaderboardUtils(Main pl) {
+	public LeaderboardUtils(Duels pl) {
 		plugin = pl;
 	}
     

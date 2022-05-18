@@ -5,7 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.dartanman.duels.Main;
+import me.dartanman.duels.Duels;
 import me.dartanman.duels.arenas.Arena;
 
 import java.util.List;
@@ -19,14 +19,14 @@ import org.bukkit.ChatColor;
  */
 public class DuelCmd implements CommandExecutor{
 	
-	private Main plugin;
+	private Duels plugin;
 	
 	/**
 	 * Constructs the DuelCmd class with access to the Main class
 	 * @param pl
 	 *   The Main class
 	 */
-	public DuelCmd(Main pl) {
+	public DuelCmd(Duels pl) {
 		plugin = pl;
 	}
 	
