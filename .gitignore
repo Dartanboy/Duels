@@ -1,0 +1,11 @@
+# Default ignored files
+/shelf/
+/.idea/*
+.classpath
+.project
+*.class
+*.xml
+*.prefs
+*.jar
+*.iml
+/target/*
