@@ -54,3 +54,26 @@ Kits:
     \nAA0AAAqqdAAPSVJPTl9DSEVTVFBMQVRFc3EAfgAAc3EAfgADdXEAfgAGAAAAA3EAfgAIcQB+AAlx\r\
     \nAH4ACnVxAH4ABgAAAANxAH4ADHNxAH4ADQAACqp0AAtJUk9OX0hFTE1FVA==\r\n"
 Arenas:
+  0:
+    Name: DefaultArena
+    Spawn-One:
+      World: world
+      X: 0
+      Y: 100
+      Z: 0
+      Yaw: 0
+      Pitch: 0
+    Spawn-Two:
+      World: world
+      X: 0
+      Y: 100
+      Z: 20
+      Yaw: 180
+      Pitch: 0
+    Lobby:
+      World: world
+      X: 100
+      Y: 100
+      Z: 100
+      Yaw: 0
+      Pitch: 0
