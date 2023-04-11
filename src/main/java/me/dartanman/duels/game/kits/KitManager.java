@@ -22,6 +22,8 @@ public class KitManager
     {
         this.plugin = plugin;
         this.kitList = new ArrayList<>();
+
+        loadKits();
     }
 
     private void loadKits()
