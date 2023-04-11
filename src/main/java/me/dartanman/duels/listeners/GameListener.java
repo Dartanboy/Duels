@@ -33,6 +33,7 @@ public class GameListener implements Listener
                     if(health - dmg <= 0)
                     {
                         arena.getGame().kill(player);
+                        event.setCancelled(true);
                     }
                 }
             }
