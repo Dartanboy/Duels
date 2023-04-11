@@ -30,7 +30,10 @@ public class KitsDuelsSubCmd extends DuelsSubCommand
             {
                 if(args[0].equalsIgnoreCase("list"))
                 {
-                    // TODO: list kits
+                    for(Kit kit : plugin.getKitManager().getKitList())
+                    {
+                        player.sendMessage("- " + kit.getName());
+                    }
                     return true;
                 }
                 else
