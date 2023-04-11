@@ -6,8 +6,10 @@ import me.dartanman.duels.game.Game;
 import me.dartanman.duels.game.GameState;
 import me.dartanman.duels.utils.PlayerRestoration;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -122,6 +124,14 @@ public class Arena
         PlayerRestoration.savePlayer(player);
         players.add(player.getUniqueId());
         player.teleport(lobby);
+
+        player.setGameMode(GameMode.ADVENTURE);
+        player.getInventory().clear();
+        player.getInventory().setArmorContents(new ItemStack[4]);
+        player.setMaxHealth(20);
+        player.setHealth(20);
+        player.setFoodLevel(20);
+
         if(players.size() == 2)
         {
             start();
