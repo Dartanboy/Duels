@@ -64,6 +64,7 @@ public class Arena
 
     public void start()
     {
+        gameState = GameState.COUNTDOWN;
         countdown.start();
     }
 

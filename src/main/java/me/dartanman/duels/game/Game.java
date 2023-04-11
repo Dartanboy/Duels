@@ -15,6 +15,8 @@ public class Game
 
     public void start()
     {
+        arena.setGameState(GameState.PLAYING);
+
         Player playerOne = Bukkit.getPlayer(arena.getPlayerOne());
         Player playerTwo = Bukkit.getPlayer(arena.getPlayerTwo());
 
@@ -40,5 +42,25 @@ public class Game
 
         // TODO: Give players their kits
         arena.sendMessage("Kits have not *YET* been implemented into the Duels 3.2 update! Sorry!");
+    }
+
+    public void kill(Player player)
+    {
+        Player playerOne = Bukkit.getPlayer(arena.getPlayerOne());
+        Player playerTwo = Bukkit.getPlayer(arena.getPlayerTwo());
+
+        assert playerOne != null;
+        assert playerTwo != null;
+
+        if(playerOne.getUniqueId().equals(player.getUniqueId()))
+        {
+            // playerTwo wins
+            arena.sendMessage(playerTwo.getName() + " wins!");
+        }
+        else
+        {
+            // playerOne wins
+            arena.sendMessage(playerOne.getName() + " wins!");
+        }
     }
 }

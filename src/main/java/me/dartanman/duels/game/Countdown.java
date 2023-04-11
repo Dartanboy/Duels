@@ -38,7 +38,6 @@ public class Countdown extends BukkitRunnable
 
     public void start()
     {
-
         if(seconds % 10 != 0)
             sendSeconds();
         runTaskTimer(plugin, 0L, 20L);
@@ -47,7 +46,6 @@ public class Countdown extends BukkitRunnable
     @Override
     public void run()
     {
-        seconds--;
         if(seconds == 0)
         {
             cancel();
@@ -59,6 +57,7 @@ public class Countdown extends BukkitRunnable
             {
                 sendSeconds();
             }
+            seconds--;
         }
     }
 }
