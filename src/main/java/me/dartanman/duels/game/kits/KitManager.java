@@ -98,6 +98,12 @@ public class KitManager
         ItemStack[] armor = {boots, leggings, chestplate, helmet};
         ItemStack[] inventory = player.getInventory().getContents();
 
+        // ignore armor
+        inventory[inventory.length - 2] = null;
+        inventory[inventory.length - 3] = null;
+        inventory[inventory.length - 4] = null;
+        inventory[inventory.length - 5] = null;
+
         plugin.getConfig().set("Kits." + id + ".Name", kitName);
         plugin.getConfig().set("Kits." + id + ".Armor.Helmet", Base64Utils.toBase64(helmet));
         plugin.getConfig().set("Kits." + id + ".Armor.Chestplate", Base64Utils.toBase64(chestplate));
