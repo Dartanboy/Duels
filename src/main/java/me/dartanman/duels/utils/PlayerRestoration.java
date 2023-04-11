@@ -64,11 +64,11 @@ public class PlayerRestoration
             player.getPersistentDataContainer().set(new NamespacedKey(plugin, "world"),
                     PersistentDataType.STRING, Objects.requireNonNull(location.getWorld()).getName());
             player.getPersistentDataContainer().set(new NamespacedKey(plugin, "x"),
-                    PersistentDataType.DOUBLE, location.getX());
+                    PersistentDataType.INTEGER, location.getBlockX());
             player.getPersistentDataContainer().set(new NamespacedKey(plugin, "y"),
-                    PersistentDataType.DOUBLE, location.getY());
+                    PersistentDataType.INTEGER, location.getBlockY());
             player.getPersistentDataContainer().set(new NamespacedKey(plugin, "z"),
-                    PersistentDataType.DOUBLE, location.getZ());
+                    PersistentDataType.INTEGER, location.getBlockZ());
 
             this.gameMode = player.getGameMode();
             this.inventoryContents = player.getInventory().getContents();

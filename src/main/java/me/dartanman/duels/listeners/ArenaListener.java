@@ -33,9 +33,9 @@ public class ArenaListener implements Listener
         if(pdc.has(new NamespacedKey(plugin, "world"), PersistentDataType.STRING))
         {
             String worldName = pdc.get(new NamespacedKey(plugin, "world"), PersistentDataType.STRING);
-            double x = pdc.get(new NamespacedKey(plugin, "x"), PersistentDataType.DOUBLE);
-            double y = pdc.get(new NamespacedKey(plugin, "x"), PersistentDataType.DOUBLE);
-            double z = pdc.get(new NamespacedKey(plugin, "x"), PersistentDataType.DOUBLE);
+            int x = pdc.get(new NamespacedKey(plugin, "x"), PersistentDataType.INTEGER);
+            int y = pdc.get(new NamespacedKey(plugin, "y"), PersistentDataType.INTEGER);
+            int z = pdc.get(new NamespacedKey(plugin, "z"), PersistentDataType.INTEGER);
             assert worldName != null;
             World world = Bukkit.getWorld(worldName);
             player.teleport(new Location(world, x, y, z));
