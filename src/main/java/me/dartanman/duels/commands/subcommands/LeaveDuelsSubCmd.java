@@ -3,6 +3,7 @@ package me.dartanman.duels.commands.subcommands;
 import me.dartanman.duels.Duels;
 import me.dartanman.duels.game.GameState;
 import me.dartanman.duels.game.arenas.Arena;
+import me.dartanman.duels.utils.PlayerRestoration;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -31,6 +32,8 @@ public class LeaveDuelsSubCmd extends DuelsSubCommand
                 }
                 else
                 {
+                    PlayerRestoration.restorePlayer(player, true);
+
                     if(arena.getGameState() == GameState.PLAYING)
                     {
                         arena.getGame().kill(player);
