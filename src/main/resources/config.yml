@@ -6,6 +6,7 @@ Messages:
   Incorrect-Args: '&cIncorrect args. Try &e<suggestion>&c!'
   No-Available-Arena: '&cUnfortunately, no Duel Arenas are available right now. Try again later!'
   Joined-Arena: '&aYou have joined the Duel Arena called &e<arena_name>'
+  Player-Left-Cancelled: '&cA player has left the duel and the countdown has been cancelled.'
 
 
   # OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD
