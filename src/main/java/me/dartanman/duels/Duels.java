@@ -1,5 +1,6 @@
 package me.dartanman.duels;
 
+import me.dartanman.duels.game.kits.KitManager;
 import me.dartanman.duels.listeners.ArenaListener;
 import me.dartanman.duels.game.arenas.ArenaManager;
 import me.dartanman.duels.commands.DuelCmd;
@@ -10,6 +11,7 @@ public class Duels extends JavaPlugin
 {
 
     private ArenaManager arenaManager;
+    private KitManager kitManager;
 
     @Override
     public void onEnable()
@@ -18,6 +20,7 @@ public class Duels extends JavaPlugin
         saveConfig();
 
         this.arenaManager = new ArenaManager(this);
+        this.kitManager = new KitManager(this);
 
         getCommand("duel").setExecutor(new DuelCmd(this));
 
@@ -28,6 +31,11 @@ public class Duels extends JavaPlugin
     public ArenaManager getArenaManager()
     {
         return arenaManager;
+    }
+
+    public KitManager getKitManager()
+    {
+        return kitManager;
     }
 
 }

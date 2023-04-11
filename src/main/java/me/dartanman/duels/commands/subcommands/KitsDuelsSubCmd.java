@@ -1,9 +1,12 @@
 package me.dartanman.duels.commands.subcommands;
 
 import me.dartanman.duels.Duels;
+import me.dartanman.duels.game.kits.Kit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.util.Objects;
 
 public class KitsDuelsSubCmd extends DuelsSubCommand
 {
@@ -41,19 +44,39 @@ public class KitsDuelsSubCmd extends DuelsSubCommand
                 if(args[0].equalsIgnoreCase("create"))
                 {
                     String kitName = args[1];
-                    // TODO: Create a kit
+                    for(Kit kit : plugin.getKitManager().getKitList())
+                    {
+                        if(kit.getName().equalsIgnoreCase(kitName))
+                        {
+                            player.sendMessage(ChatColor.RED + "A kit with that name already exists!");
+                            return true;
+                        }
+                    }
+
+                    plugin.getKitManager().createKit(kitName, player);
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                            Objects.requireNonNull(plugin.getConfig().getString("Messages.Kit-Created"))
+                                    .replace("<kit_name>", kitName)));
                     return true;
                 }
                 else if (args[0].equalsIgnoreCase("delete"))
                 {
                     String kitName = args[1];
-                    // TODO: Delete a kit
+                    plugin.getKitManager().deleteKit(kitName);
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                            Objects.requireNonNull(plugin.getConfig().getString("Messages.Kit-Deleted"))
+                                    .replace("<kit_name>", kitName)));
                     return true;
                 }
                 else if (args[0].equalsIgnoreCase("select"))
                 {
                     String kitName = args[1];
-                    // TODO: Choose a kit
+                    // TODO: Select kit instead of give kit
+                    Kit kit = plugin.getKitManager().getKit(kitName);
+                    if(kit != null)
+                    {
+                        kit.apply(player);
+                    }
                     return true;
                 }
                 else
