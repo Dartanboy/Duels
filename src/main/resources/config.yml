@@ -19,9 +19,7 @@ Messages:
     - '&6/duels join [id]&f: &eJoin an available arena or the arena with the given id'
     - '&6/duels listarenas&f: &eList all arenas'
     - '&6/duels createarena <arena name>&f: &eCreate a new arena called <arena name>'
-    - '&6/duels setlobby&f: &eSet the lobby location of the arena you are currently making'
-    - '&6/duels setspawn1&f: &eSet spawnpoint 1 of the arena you are currently making'
-    - '&6/duels setspawn2&f: &eSet spawnpoint 2 of the arena you are currently making'
+    - '&6/duels setlobby &7or &6setspawn1 &7or &6setspawn2&f: &eSet the given location of the arena you are currently making'
     - '&6/duels finisharena&f: &eSave and finish the arena you are currently making'
 
 
