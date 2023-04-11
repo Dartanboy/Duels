@@ -1,5 +1,7 @@
 package me.dartanman.duels;
 
+import me.dartanman.duels.listeners.ArenaListener;
+import me.dartanman.duels.game.arenas.ArenaManager;
 import me.dartanman.duels.commands.DuelCmd;
 import org.bukkit.plugin.java.JavaPlugin;
 

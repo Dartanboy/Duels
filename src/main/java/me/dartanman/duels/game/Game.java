@@ -1,5 +1,6 @@
-package me.dartanman.duels;
+package me.dartanman.duels.game;
 
+import me.dartanman.duels.game.arenas.Arena;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 

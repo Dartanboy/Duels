@@ -1,4 +1,4 @@
-package me.dartanman.duels;
+package me.dartanman.duels.game;
 
 public enum GameState
 {

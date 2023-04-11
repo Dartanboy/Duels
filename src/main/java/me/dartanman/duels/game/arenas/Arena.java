@@ -1,5 +1,10 @@
-package me.dartanman.duels;
+package me.dartanman.duels.game.arenas;
 
+import me.dartanman.duels.*;
+import me.dartanman.duels.game.Countdown;
+import me.dartanman.duels.game.Game;
+import me.dartanman.duels.game.GameState;
+import me.dartanman.duels.utils.PlayerRestoration;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

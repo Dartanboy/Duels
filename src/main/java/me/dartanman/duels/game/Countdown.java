@@ -1,5 +1,7 @@
-package me.dartanman.duels;
+package me.dartanman.duels.game;
 
+import me.dartanman.duels.Duels;
+import me.dartanman.duels.game.arenas.Arena;
 import org.bukkit.ChatColor;
 import org.bukkit.scheduler.BukkitRunnable;
 

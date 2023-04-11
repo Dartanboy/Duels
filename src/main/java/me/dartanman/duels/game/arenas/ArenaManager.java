@@ -1,5 +1,7 @@
-package me.dartanman.duels;
+package me.dartanman.duels.game.arenas;
 
+import me.dartanman.duels.utils.ConfigUtils;
+import me.dartanman.duels.Duels;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
