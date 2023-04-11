@@ -16,6 +16,8 @@ import java.util.UUID;
 public class Arena
 {
 
+    private final Duels plugin;
+
     private final int id;
     private final String name;
 
@@ -27,9 +29,12 @@ public class Arena
     private final Location lobby;
     private Game game;
     private Countdown countdown;
+    private int countdownSeconds;
 
     public Arena(Duels plugin, int id, String name, Location spawnOne, Location spawnTwo, Location lobby, int countdownSeconds)
     {
+        this.plugin = plugin;
+
         this.id = id;
         this.name = name;
 
@@ -40,11 +45,14 @@ public class Arena
         this.lobby = lobby;
         this.players = new ArrayList<>();
         this.game = new Game(this);
+        this.countdownSeconds = countdownSeconds;
         this.countdown = new Countdown(plugin, this, countdownSeconds);
     }
 
     public Arena(Duels plugin, ArenaConfig arenaConfig)
     {
+        this.plugin = plugin;
+
         this.id = arenaConfig.getId();
         this.name = arenaConfig.getName();
 
@@ -55,12 +63,33 @@ public class Arena
         this.lobby = arenaConfig.getLobby();
         this.players = new ArrayList<>();
         this.game = new Game(this);
+        this.countdownSeconds = arenaConfig.getCountdownSeconds();
         this.countdown = new Countdown(plugin, this, arenaConfig.getCountdownSeconds());
     }
 
     /*
      * Gameplay
      */
+
+    public void reset()
+    {
+        this.game = new Game(this);
+        this.countdown = new Countdown(plugin, this, countdownSeconds);
+        Player p1 = Bukkit.getPlayer(getPlayerOne());
+        Player p2 = Bukkit.getPlayer(getPlayerTwo());
+        if(p1 != null)
+        {
+            PlayerRestoration.restorePlayer(p1, false);
+        }
+        if(p2 != null)
+        {
+            PlayerRestoration.restorePlayer(p2, false);
+        }
+
+        players.clear();
+        gameState = GameState.IDLE;
+
+    }
 
     public void start()
     {
