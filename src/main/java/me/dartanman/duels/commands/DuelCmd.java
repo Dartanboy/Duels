@@ -22,6 +22,7 @@ public class DuelCmd implements CommandExecutor
         new SetSpawn1DuelsSubCmd(plugin);
         new SetSpawn2DuelsSubCmd(plugin);
         new FinishArenaDuelsSubCmd(plugin);
+        new LeaveDuelsSubCmd(plugin);
     }
 
     @Override
