@@ -37,11 +37,8 @@ public class Game
         assert playerOne != null;
         assert playerTwo != null;
 
-        playerOne.getInventory().clear();
-        playerTwo.getInventory().clear();
-
-        // TODO: Give players their kits
-        arena.sendMessage("Kits have not *YET* been implemented into the Duels 3.2 update! Sorry!");
+        arena.getKitManager().giveKit(playerOne);
+        arena.getKitManager().giveKit(playerTwo);
     }
 
     public void kill(Player player)

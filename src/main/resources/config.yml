@@ -15,6 +15,7 @@ Messages:
   Arena-Finished: '&aArena has been finished and is now joinable!'
   Kit-Created: '&aKit &e<kit_name> &2&lcreated&a!'
   Kit-Deleted: '&aKit &e<kit_name> &4&ldeleted&a!'
+  Kit-Selected: '&aSelected Kit &e<kit_name>&a!'
   Help-Menu:
     - '&9Duels Help Menu&f:'
     - '&6/duels help&f: &eDisplay this help menu'

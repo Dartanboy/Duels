@@ -2,6 +2,7 @@ package me.dartanman.duels.commands.subcommands;
 
 import me.dartanman.duels.Duels;
 import me.dartanman.duels.game.kits.Kit;
+import me.dartanman.duels.game.kits.KitManager;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -74,11 +75,13 @@ public class KitsDuelsSubCmd extends DuelsSubCommand
                 else if (args[0].equalsIgnoreCase("select"))
                 {
                     String kitName = args[1];
-                    // TODO: Select kit instead of give kit
                     Kit kit = plugin.getKitManager().getKit(kitName);
                     if(kit != null)
                     {
-                        kit.apply(player);
+                        KitManager.selectKit(player, kit.getName());
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                                Objects.requireNonNull(plugin.getConfig().getString("Messages.Kit-Selected"))
+                                        .replace("<kit_name>", kit.getName())));
                     }
                     return true;
                 }

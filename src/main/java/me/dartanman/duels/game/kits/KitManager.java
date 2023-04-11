@@ -8,12 +8,17 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class KitManager
 {
+
+    public static final HashMap<UUID, String> kitMap = new HashMap<>();
+
+    public static void selectKit(Player player, String kit)
+    {
+        kitMap.put(player.getUniqueId(), kit);
+    }
 
     private final Duels plugin;
     private final List<Kit> kitList;
@@ -24,6 +29,20 @@ public class KitManager
         this.kitList = new ArrayList<>();
 
         loadKits();
+    }
+
+    public void giveKit(Player player)
+    {
+        Kit kit = getKit("Default");
+        if(kitMap.containsKey(player.getUniqueId()))
+        {
+            kit = getKit(kitMap.get(player.getUniqueId()));
+            if(kit == null)
+            {
+                kit = getKit("Default");
+            }
+        }
+        kit.apply(player);
     }
 
     private void loadKits()
