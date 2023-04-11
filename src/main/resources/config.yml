@@ -21,10 +21,10 @@ Messages:
     - '&6/duels join [id]&f: &eJoin an available arena or the arena with the given id'
     - '&6/duels listarenas&f: &eList all arenas'
     - '&6/duels createarena <arena name>&f: &eCreate a new arena called <arena name>'
-    - '&6/duels setlobby &7or &6setspawn1 &7or &6setspawn2&f: &eSet the given location of the arena you are currently making'
+    - '&6/duels setlobby &7or &6setspawn1 &7or &6setspawn2&f: &eSet the respective location of the arena you are currently making'
     - '&6/duels finisharena&f: &eSave and finish the arena you are currently making'
     - '&6/duels kits list&f: &eList all kits'
-    - '&6/duels kits <create/delete> <kit name>&f: &eCreates <kit name> with your current inventory or deletes <kit name>'
+    - '&6/duels kits <create/delete/select> <kit name>&f: &eCreates <kit name> with your current inventory, deletes <kit name>, or selects <kit name>, respectively'
 Kits:
   0:
     Name: Default
