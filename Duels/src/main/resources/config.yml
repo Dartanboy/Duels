@@ -1,8 +1,10 @@
 # Duels by Dartanman
 # Don't edit kits in the file... unless you're particularly confident in your ability to read/write in Base64!
-Settings:
-  ForceHealth: true
 Messages:
+  Countdown: "&aThe Duel begins in <seconds> second(s)!"
+
+
+  # OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD
   WinMessage: '&aYou won the duel!'
   LoseMessage: '&cYou lost the duel!'
   PrepareToDuelMessage: '&1PREPARE TO DUEL!'
