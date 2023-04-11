@@ -53,7 +53,7 @@ public class ArenaListener implements Listener
         Arena arena = plugin.getArenaManager().getArena(player);
         if(arena != null)
         {
-            arena.removePlayer(player);
+            arena.getGame().kill(player);
             PlayerRestoration.restorePlayer(player, true);
         }
     }

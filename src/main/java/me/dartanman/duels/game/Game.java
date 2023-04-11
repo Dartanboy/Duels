@@ -62,5 +62,7 @@ public class Game
             // playerOne wins
             arena.sendMessage(playerOne.getName() + " wins!");
         }
+
+        arena.reset();
     }
 }
