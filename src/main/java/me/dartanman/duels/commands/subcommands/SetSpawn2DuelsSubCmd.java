@@ -1,0 +1,51 @@
+package me.dartanman.duels.commands.subcommands;
+
+import me.dartanman.duels.Duels;
+import me.dartanman.duels.game.arenas.ArenaConfig;
+import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+import java.util.UUID;
+
+public class SetSpawn2DuelsSubCmd extends DuelsSubCommand
+{
+    public SetSpawn2DuelsSubCmd(Duels plugin)
+    {
+        super(plugin, "setspawn2");
+    }
+
+    @Override
+    public boolean execute(CommandSender sender, String[] args)
+    {
+        if(sender instanceof Player player)
+        {
+            if(args.length == 0)
+            {
+                UUID uuid = player.getUniqueId();
+                ArenaConfig arenaConfig = ArenaConfig.creationMap.get(uuid);
+                if(arenaConfig == null)
+                {
+                    player.sendMessage(ChatColor.RED + "You must do " + ChatColor.YELLOW +
+                            "/duels createarena <arena name> " +
+                            ChatColor.RED + "before doing that!");
+                    return true;
+                }
+
+                arenaConfig.setSpawnTwo(player.getLocation());
+                player.sendMessage(ChatColor.GREEN + "Spawnpoint set!");
+                return true;
+            }
+            else
+            {
+                incorrectArgs(sender, "/duels createarena <arena name>");
+                return true;
+            }
+        }
+        else
+        {
+            sender.sendMessage(ChatColor.RED + "You must be a Player to do that!");
+            return false;
+        }
+    }
+}

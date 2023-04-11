@@ -9,10 +9,10 @@ import org.bukkit.entity.Player;
 
 import java.util.Objects;
 
-public class JoinSubCmd extends SubCommand
+public class JoinDuelsSubCmd extends DuelsSubCommand
 {
 
-    public JoinSubCmd(Duels plugin)
+    public JoinDuelsSubCmd(Duels plugin)
     {
         super(plugin, "join");
     }

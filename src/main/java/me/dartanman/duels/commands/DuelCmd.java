@@ -1,10 +1,7 @@
 package me.dartanman.duels.commands;
 
 import me.dartanman.duels.Duels;
-import me.dartanman.duels.commands.subcommands.HelpSubCmd;
-import me.dartanman.duels.commands.subcommands.JoinSubCmd;
-import me.dartanman.duels.commands.subcommands.ListArenasSubCmd;
-import me.dartanman.duels.commands.subcommands.SubCommand;
+import me.dartanman.duels.commands.subcommands.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -17,9 +14,13 @@ public class DuelCmd implements CommandExecutor
     public DuelCmd(Duels plugin)
     {
         this.plugin = plugin;
-        new JoinSubCmd(plugin);
-        new ListArenasSubCmd(plugin);
-        new HelpSubCmd(plugin);
+        new JoinDuelsSubCmd(plugin);
+        new ListArenasDuelsSubCmd(plugin);
+        new HelpDuelsSubCmd(plugin);
+        new CreateArenaDuelsSubCmd(plugin);
+        new SetLobbyDuelsSubCmd(plugin);
+        new SetSpawn1DuelsSubCmd(plugin);
+        new SetSpawn2DuelsSubCmd(plugin);
     }
 
     @Override
@@ -34,7 +35,7 @@ public class DuelCmd implements CommandExecutor
         {
             String[] subArgs = new String[args.length - 1];
             System.arraycopy(args, 1, subArgs, 0, args.length - 1);
-            for(SubCommand subCommand : SubCommand.getSubCommands())
+            for(DuelsSubCommand subCommand : DuelsSubCommand.getSubCommands())
             {
                 if(subCommand.getSubCommand().equalsIgnoreCase(args[0]))
                 {

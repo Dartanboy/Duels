@@ -10,11 +10,18 @@ Messages:
   Player-Left-Cancelled: '&cA player has left the duel and the countdown has been cancelled.'
   Invalid-Arena-Id: '&c<arg> is not a valid arena id (either it does not exist or is a name, not an id)'
   Arena-List-Format: '&9<id> &f- &e<arena_name> &f- &6<state>'
+  Arena-Created: '&aArena &e<arena_name> &acreated! &e&lRemember to set its lobby and spawn locations!'
+  Arena-Not-Finished: '&cArena is not finished! Ensure it has both spawnpoints and a lobby location set!'
   Help-Menu:
     - '&9Duels Help Menu&f:'
     - '&6/duels help&f: &eDisplay this help menu'
     - '&6/duels join [id]&f: &eJoin an available arena or the arena with the given id'
     - '&6/duels listarenas&f: &eList all arenas'
+    - '&6/duels createarena <arena name>&f: &eCreate a new arena called <arena name>'
+    - '&6/duels setlobby&f: &eSet the lobby location of the arena you are currently making'
+    - '&6/duels setspawn1&f: &eSet spawnpoint 1 of the arena you are currently making'
+    - '&6/duels setspawn2&f: &eSet spawnpoint 2 of the arena you are currently making'
+    - '&6/duels finisharena&f: &eSave and finish the arena you are currently making'
 
 
   # OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD

@@ -7,10 +7,10 @@ import org.bukkit.command.CommandSender;
 
 import java.util.Objects;
 
-public class ListArenasSubCmd extends SubCommand
+public class ListArenasDuelsSubCmd extends DuelsSubCommand
 {
 
-    public ListArenasSubCmd(Duels plugin)
+    public ListArenasDuelsSubCmd(Duels plugin)
     {
         super(plugin, "listarenas");
     }

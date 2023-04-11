@@ -56,6 +56,41 @@ public class ArenaManager
         }
     }
 
+    public void save(ArenaConfig arenaConfig)
+    {
+        int id = arenaConfig.getId();
+        String idStr = String.valueOf(id);
+        String name = arenaConfig.getName();
+        Location spawnOne = arenaConfig.getSpawnOne();
+        Location spawnTwo = arenaConfig.getSpawnTwo();
+        Location lobby = arenaConfig.getLobby();
+        int countdownSeconds = arenaConfig.getCountdownSeconds();
+
+        plugin.getConfig().set("Arenas." + idStr + ".Name", name);
+        plugin.getConfig().set("Arenas." + idStr + ".Countdown-Seconds", countdownSeconds);
+        plugin.getConfig().set("Arenas." + idStr + ".Spawn-One.World", Objects.requireNonNull(spawnOne.getWorld()).getName());
+        plugin.getConfig().set("Arenas." + idStr + ".Spawn-One.X", spawnOne.getX());
+        plugin.getConfig().set("Arenas." + idStr + ".Spawn-One.Y", spawnOne.getY());
+        plugin.getConfig().set("Arenas." + idStr + ".Spawn-One.Z", spawnOne.getZ());
+        plugin.getConfig().set("Arenas." + idStr + ".Spawn-One.Yaw", spawnOne.getYaw());
+        plugin.getConfig().set("Arenas." + idStr + ".Spawn-One.Pitch", spawnOne.getPitch());
+        plugin.getConfig().set("Arenas." + idStr + ".Spawn-Two.World", Objects.requireNonNull(spawnTwo.getWorld()).getName());
+        plugin.getConfig().set("Arenas." + idStr + ".Spawn-Two.X", spawnTwo.getX());
+        plugin.getConfig().set("Arenas." + idStr + ".Spawn-Two.Y", spawnTwo.getY());
+        plugin.getConfig().set("Arenas." + idStr + ".Spawn-Two.Z", spawnTwo.getZ());
+        plugin.getConfig().set("Arenas." + idStr + ".Spawn-Two.Yaw", spawnTwo.getYaw());
+        plugin.getConfig().set("Arenas." + idStr + ".Spawn-Two.Pitch", spawnTwo.getPitch());
+        plugin.getConfig().set("Arenas." + idStr + ".Lobby.World", Objects.requireNonNull(lobby.getWorld()).getName());
+        plugin.getConfig().set("Arenas." + idStr + ".Lobby.X", lobby.getX());
+        plugin.getConfig().set("Arenas." + idStr + ".Lobby.Y", lobby.getY());
+        plugin.getConfig().set("Arenas." + idStr + ".Lobby.Z", lobby.getZ());
+        plugin.getConfig().set("Arenas." + idStr + ".Lobby.Yaw", lobby.getYaw());
+        plugin.getConfig().set("Arenas." + idStr + ".Lobby.Pitch", lobby.getPitch());
+        plugin.saveConfig();
+
+        arenaList.add(new Arena(plugin, arenaConfig));
+    }
+
     public Arena getArena(Player player)
     {
         UUID uuid = player.getUniqueId();
@@ -84,6 +119,20 @@ public class ArenaManager
     public List<Arena> getArenaList()
     {
         return arenaList;
+    }
+
+    public int getNextId()
+    {
+        int max = 0;
+        for(Arena arena : arenaList)
+        {
+            int id = arena.getId();
+            if(id > max)
+            {
+                max = id;
+            }
+        }
+        return max + 1;
     }
 
 }

@@ -1,16 +1,13 @@
 package me.dartanman.duels.commands.subcommands;
 
 import me.dartanman.duels.Duels;
-import me.dartanman.duels.game.arenas.Arena;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
-import java.util.Objects;
-
-public class HelpSubCmd extends SubCommand
+public class HelpDuelsSubCmd extends DuelsSubCommand
 {
 
-    public HelpSubCmd(Duels plugin)
+    public HelpDuelsSubCmd(Duels plugin)
     {
         super(plugin, "help");
     }

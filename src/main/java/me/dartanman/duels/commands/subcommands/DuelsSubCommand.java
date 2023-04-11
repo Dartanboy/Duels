@@ -8,21 +8,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public abstract class SubCommand
+public abstract class DuelsSubCommand
 {
 
     protected Duels plugin;
     protected String subCommand;
     protected String[] args;
 
-    private static final List<SubCommand> subCommands = new ArrayList<>();
+    private static final List<DuelsSubCommand> subCommands = new ArrayList<>();
 
-    public static List<SubCommand> getSubCommands()
+    public static List<DuelsSubCommand> getSubCommands()
     {
         return subCommands;
     }
 
-    public SubCommand(Duels plugin, String subCommand)
+    public DuelsSubCommand(Duels plugin, String subCommand)
     {
         this.plugin = plugin;
         this.subCommand = subCommand;

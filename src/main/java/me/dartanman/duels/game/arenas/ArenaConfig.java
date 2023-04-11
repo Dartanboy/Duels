@@ -2,6 +2,9 @@ package me.dartanman.duels.game.arenas;
 
 import org.bukkit.Location;
 
+import java.util.HashMap;
+import java.util.UUID;
+
 /**
  * ArenaConfig -- The idea is to create all the information an Arena needs, then create it.
  * This is better that what I used to do because if you created only half an Arena, problems could occur.
@@ -11,6 +14,8 @@ import org.bukkit.Location;
  */
 public class ArenaConfig
 {
+
+    public static final HashMap<UUID, ArenaConfig> creationMap = new HashMap<>();
 
     private final int id;
     private final String name;
