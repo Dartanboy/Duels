@@ -46,6 +46,11 @@ public abstract class DuelsSubCommand
         return subCommand;
     }
 
+    public boolean is(String string)
+    {
+        return string.equalsIgnoreCase(subCommand);
+    }
+
     public abstract boolean execute(CommandSender sender, String[] args);
 
 }

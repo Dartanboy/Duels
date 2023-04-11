@@ -23,6 +23,7 @@ public class DuelCmd implements CommandExecutor
         new SetSpawn2DuelsSubCmd(plugin);
         new FinishArenaDuelsSubCmd(plugin);
         new LeaveDuelsSubCmd(plugin);
+        new KitsDuelsSubCmd(plugin);
     }
 
     @Override
@@ -39,7 +40,7 @@ public class DuelCmd implements CommandExecutor
             System.arraycopy(args, 1, subArgs, 0, args.length - 1);
             for(DuelsSubCommand subCommand : DuelsSubCommand.getSubCommands())
             {
-                if(subCommand.getSubCommand().equalsIgnoreCase(args[0]))
+                if(subCommand.is(args[0]))
                 {
                     return subCommand.execute(sender, subArgs);
                 }
