@@ -5,8 +5,11 @@ Messages:
   Unknown-Command: '&cUnknown command. Try &e/duels help&c!'
   Incorrect-Args: '&cIncorrect args. Try &e<suggestion>&c!'
   No-Available-Arena: '&cUnfortunately, no Duel Arenas are available right now. Try again later!'
+  Arena-Not-Available: '&cUnfortunately, that particular arena is not available right now. Pick another or try again later!'
   Joined-Arena: '&aYou have joined the Duel Arena called &e<arena_name>'
   Player-Left-Cancelled: '&cA player has left the duel and the countdown has been cancelled.'
+  Invalid-Arena-Id: '&c<arg> is not a valid arena id (either it does not exist or is a name, not an id)'
+  Arena-List-Format: '&9<id> &f- &e<arena_name> &f- &6<state>'
 
 
   # OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD

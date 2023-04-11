@@ -69,6 +69,18 @@ public class ArenaManager
         return null;
     }
 
+    public Arena getArena(int id)
+    {
+        for(Arena arena : arenaList)
+        {
+            if(arena.getId() == id)
+            {
+                return arena;
+            }
+        }
+        return null;
+    }
+
     public List<Arena> getArenaList()
     {
         return arenaList;

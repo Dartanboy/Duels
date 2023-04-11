@@ -40,9 +40,47 @@ public class JoinSubCmd extends SubCommand
                     return true;
                 }
             }
+            else if (args.length == 1)
+            {
+                int id;
+                try
+                {
+                    id = Integer.parseInt(args[0]);
+                }
+                catch (NumberFormatException e)
+                {
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                            Objects.requireNonNull(Objects.requireNonNull(plugin.getConfig().getString("Messages.Invalid-Arena-Id"))
+                                    .replace("<arg>", args[0]))));
+                    return true;
+                }
+
+                Arena arena = plugin.getArenaManager().getArena(id);
+                if(arena == null)
+                {
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                            Objects.requireNonNull(Objects.requireNonNull(plugin.getConfig().getString("Messages.Invalid-Arena-Id"))
+                                    .replace("<arg>", args[0]))));
+                    return true;
+                }
+
+                if(arena.getGameState() != GameState.IDLE)
+                {
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                            Objects.requireNonNull(Objects.requireNonNull(plugin.getConfig().getString("Messages.Arena-Not-Available"))
+                                    .replace("<arg>", args[0]))));
+                    return true;
+                }
+
+                arena.addPlayer(player);
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                        Objects.requireNonNull(Objects.requireNonNull(plugin.getConfig().getString("Messages.Joined-Arena"))
+                                .replace("<arena_name>", arena.getName()))));
+                return true;
+            }
             else
             {
-                incorrectArgs(sender, "/duels join");
+                incorrectArgs(sender, "/duels join [arena id]");
                 return true;
             }
         }

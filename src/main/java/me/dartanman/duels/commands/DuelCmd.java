@@ -2,11 +2,11 @@ package me.dartanman.duels.commands;
 
 import me.dartanman.duels.Duels;
 import me.dartanman.duels.commands.subcommands.JoinSubCmd;
+import me.dartanman.duels.commands.subcommands.ListArenasSubCmd;
 import me.dartanman.duels.commands.subcommands.SubCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public class DuelCmd implements CommandExecutor
 {
@@ -17,6 +17,7 @@ public class DuelCmd implements CommandExecutor
     {
         this.plugin = plugin;
         new JoinSubCmd(plugin);
+        new ListArenasSubCmd(plugin);
     }
 
     @Override
