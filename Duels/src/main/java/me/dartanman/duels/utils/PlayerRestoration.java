@@ -1,11 +1,15 @@
 package me.dartanman.duels.utils;
 
+import me.dartanman.duels.Duels;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
+import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 
 import java.util.Collection;
@@ -23,11 +27,11 @@ public class PlayerRestoration
         new SavedPlayerInfo(player);
     }
 
-    public static void restorePlayer(Player player)
+    public static void restorePlayer(Player player, boolean quitting)
     {
         if(savedInfo.containsKey(player.getUniqueId()))
         {
-            savedInfo.get(player.getUniqueId()).restore();
+            savedInfo.get(player.getUniqueId()).restore(quitting);
         }
         savedInfo.remove(player.getUniqueId());
     }
@@ -51,8 +55,21 @@ public class PlayerRestoration
                 return;
             }
 
+            Duels plugin = JavaPlugin.getPlugin(Duels.class);
+
             this.uuid = player.getUniqueId();
             this.location = player.getLocation();
+
+            // for if player disconnects (and thus, does not teleport)
+            player.getPersistentDataContainer().set(new NamespacedKey(plugin, "world"),
+                    PersistentDataType.STRING, Objects.requireNonNull(location.getWorld()).getName());
+            player.getPersistentDataContainer().set(new NamespacedKey(plugin, "x"),
+                    PersistentDataType.DOUBLE, location.getX());
+            player.getPersistentDataContainer().set(new NamespacedKey(plugin, "y"),
+                    PersistentDataType.DOUBLE, location.getY());
+            player.getPersistentDataContainer().set(new NamespacedKey(plugin, "z"),
+                    PersistentDataType.DOUBLE, location.getZ());
+
             this.gameMode = player.getGameMode();
             this.inventoryContents = player.getInventory().getContents();
             this.armorContents = player.getInventory().getArmorContents();
@@ -69,7 +86,7 @@ public class PlayerRestoration
             return Bukkit.getPlayer(uuid);
         }
 
-        protected void restore()
+        protected void restore(boolean quitting)
         {
             getPlayer().teleport(location);
             getPlayer().setGameMode(gameMode);
@@ -82,6 +99,17 @@ public class PlayerRestoration
             {
                 getPlayer().addPotionEffect(effect);
             }
+
+            if(!quitting)
+            {
+                Duels plugin = JavaPlugin.getPlugin(Duels.class);
+                getPlayer().getPersistentDataContainer().remove(new NamespacedKey(plugin, "world"));
+                getPlayer().getPersistentDataContainer().remove(new NamespacedKey(plugin, "x"));
+                getPlayer().getPersistentDataContainer().remove(new NamespacedKey(plugin, "y"));
+                getPlayer().getPersistentDataContainer().remove(new NamespacedKey(plugin, "z"));
+            }
+
+            savedInfo.remove(uuid);
         }
     }
 
