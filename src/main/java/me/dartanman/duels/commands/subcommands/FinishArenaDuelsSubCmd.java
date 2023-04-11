@@ -21,7 +21,7 @@ public class FinishArenaDuelsSubCmd extends DuelsSubCommand
     {
         if(sender instanceof Player player)
         {
-            if(args.length == 1)
+            if(args.length == 0)
             {
                 UUID uuid = player.getUniqueId();
                 ArenaConfig arenaConfig = ArenaConfig.creationMap.get(uuid);
@@ -41,8 +41,9 @@ public class FinishArenaDuelsSubCmd extends DuelsSubCommand
                     return true;
                 }
 
-
-
+                plugin.getArenaManager().save(arenaConfig);
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                        Objects.requireNonNull(plugin.getConfig().getString("Messages.Arena-Finished"))));
                 return true;
             }
             else
