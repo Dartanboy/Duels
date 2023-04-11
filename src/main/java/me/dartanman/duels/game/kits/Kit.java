@@ -23,7 +23,13 @@ public class Kit
     {
         player.getInventory().clear();
         player.getInventory().setArmorContents(armor);
-        player.getInventory().addItem(inventory);
+        for(ItemStack item : inventory)
+        {
+            if(item != null)
+            {
+                player.getInventory().addItem(item);
+            }
+        }
     }
 
     public int getId()

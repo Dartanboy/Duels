@@ -58,10 +58,10 @@ public class KitManager
             assert bootsBase64 != null;
 
             ItemStack[] armor = new ItemStack[4];
-            armor[0] = Base64Utils.fromBase64(helmetBase64);
-            armor[1] = Base64Utils.fromBase64(chestplateBase64);
-            armor[2] = Base64Utils.fromBase64(leggingsBase64);
-            armor[3] = Base64Utils.fromBase64(bootsBase64);
+            armor[3] = Base64Utils.fromBase64(helmetBase64);
+            armor[2] = Base64Utils.fromBase64(chestplateBase64);
+            armor[1] = Base64Utils.fromBase64(leggingsBase64);
+            armor[0] = Base64Utils.fromBase64(bootsBase64);
 
             ItemStack[] inventory = new ItemStack[inventoryBase64.size()];
             int i = 0;
@@ -93,7 +93,7 @@ public class KitManager
         ItemStack leggings = player.getInventory().getLeggings();
         ItemStack boots = player.getInventory().getBoots();
 
-        ItemStack[] armor = {helmet, chestplate, leggings, boots};
+        ItemStack[] armor = {boots, leggings, chestplate, helmet};
         ItemStack[] inventory = player.getInventory().getContents();
 
         plugin.getConfig().set("Kits." + id + ".Name", kitName);
