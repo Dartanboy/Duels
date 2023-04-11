@@ -18,11 +18,13 @@ public class ArenaConfig
     private Location spawnOne;
     private Location spawnTwo;
     private Location lobby;
+    private int countdownSeconds;
 
     public ArenaConfig(int id, String name)
     {
         this.id = id;
         this.name = name;
+        this.countdownSeconds = 15;
     }
 
     public boolean isFinished()
@@ -68,5 +70,15 @@ public class ArenaConfig
     public void setLobby(Location lobby)
     {
         this.lobby = lobby;
+    }
+
+    public int getCountdownSeconds()
+    {
+        return countdownSeconds;
+    }
+
+    public void setCountdownSeconds(int countdownSeconds)
+    {
+        this.countdownSeconds = countdownSeconds;
     }
 }

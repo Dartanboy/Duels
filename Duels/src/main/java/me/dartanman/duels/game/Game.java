@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 
 public class Game
 {
-    private Arena arena;
+    private final Arena arena;
 
     public Game(Arena arena)
     {
@@ -29,6 +29,7 @@ public class Game
 
     private void applyKits()
     {
-
+        // TODO: Give players their kits
+        arena.sendMessage("Kits have not *YET* been implemented into the Duels 3.2 update! Sorry!");
     }
 }

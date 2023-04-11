@@ -44,6 +44,21 @@ public class Arena
         this.countdown = new Countdown(plugin, this, countdownSeconds);
     }
 
+    public Arena(Duels plugin, ArenaConfig arenaConfig)
+    {
+        this.id = arenaConfig.getId();
+        this.name = arenaConfig.getName();
+
+        this.gameState = GameState.IDLE;
+
+        this.spawnOne = arenaConfig.getSpawnOne();
+        this.spawnTwo = arenaConfig.getSpawnTwo();
+        this.lobby = arenaConfig.getLobby();
+        this.players = new ArrayList<>();
+        this.game = new Game(this);
+        this.countdown = new Countdown(plugin, this, arenaConfig.getCountdownSeconds());
+    }
+
     /*
      * Gameplay
      */
