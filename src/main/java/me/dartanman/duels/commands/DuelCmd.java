@@ -1,6 +1,7 @@
 package me.dartanman.duels.commands;
 
 import me.dartanman.duels.Duels;
+import me.dartanman.duels.commands.subcommands.HelpSubCmd;
 import me.dartanman.duels.commands.subcommands.JoinSubCmd;
 import me.dartanman.duels.commands.subcommands.ListArenasSubCmd;
 import me.dartanman.duels.commands.subcommands.SubCommand;
@@ -18,6 +19,7 @@ public class DuelCmd implements CommandExecutor
         this.plugin = plugin;
         new JoinSubCmd(plugin);
         new ListArenasSubCmd(plugin);
+        new HelpSubCmd(plugin);
     }
 
     @Override
