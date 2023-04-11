@@ -1,4 +1,4 @@
-package me.dartanman.duels.game.arenas;
+package me.dartanman.duels;
 
 import org.bukkit.Location;
 

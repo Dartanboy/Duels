@@ -1,4 +1,4 @@
-package me.dartanman.duels.utils;
+package me.dartanman.duels;
 
 import me.dartanman.duels.Duels;
 import org.bukkit.Bukkit;

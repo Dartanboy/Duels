@@ -1,9 +1,5 @@
-package me.dartanman.duels.listeners;
+package me.dartanman.duels;
 
-import me.dartanman.duels.Duels;
-import me.dartanman.duels.game.GameState;
-import me.dartanman.duels.game.arenas.Arena;
-import me.dartanman.duels.utils.PlayerRestoration;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
