@@ -1,6 +1,7 @@
 package me.dartanman.duels.listeners;
 
 import me.dartanman.duels.Duels;
+import me.dartanman.duels.game.GameState;
 import me.dartanman.duels.utils.PlayerRestoration;
 import me.dartanman.duels.game.arenas.Arena;
 import org.bukkit.Bukkit;
@@ -53,7 +54,14 @@ public class ArenaListener implements Listener
         Arena arena = plugin.getArenaManager().getArena(player);
         if(arena != null)
         {
-            arena.getGame().kill(player);
+            if(arena.getGameState() == GameState.PLAYING)
+            {
+                arena.getGame().kill(player);
+            }
+            else
+            {
+                arena.removePlayer(player);
+            }
             PlayerRestoration.restorePlayer(player, true);
         }
     }
