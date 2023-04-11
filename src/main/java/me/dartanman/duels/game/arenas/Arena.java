@@ -149,6 +149,7 @@ public class Arena
             countdown.cancel();
             sendMessage(ChatColor.translateAlternateColorCodes('&',
                     Objects.requireNonNull(plugin.getConfig().getString("Messages.Player-Left-Cancelled"))));
+            gameState = GameState.IDLE;
         }
         this.countdown = new Countdown(plugin, this, countdownSeconds);
     }

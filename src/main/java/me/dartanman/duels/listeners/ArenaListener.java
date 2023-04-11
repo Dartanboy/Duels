@@ -54,6 +54,8 @@ public class ArenaListener implements Listener
         Arena arena = plugin.getArenaManager().getArena(player);
         if(arena != null)
         {
+            PlayerRestoration.restorePlayer(player, true);
+
             if(arena.getGameState() == GameState.PLAYING)
             {
                 arena.getGame().kill(player);
@@ -62,7 +64,6 @@ public class ArenaListener implements Listener
             {
                 arena.removePlayer(player);
             }
-            PlayerRestoration.restorePlayer(player, true);
         }
     }
 
