@@ -71,7 +71,7 @@ public class StatisticsDatabaseYAML implements StatisticsDatabase
     @Override
     public void registerNewPlayer(UUID uuid, String name)
     {
-        manager.getStatsConfig().set("Statistics." + uuid.toString() + "Last-Known-Name", name);
+        manager.getStatsConfig().set("Statistics." + uuid.toString() + ".Last-Known-Name", name);
         manager.saveStatsConfig();
         setWins(uuid, 0);
         setLosses(uuid, 0);
