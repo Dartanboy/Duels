@@ -25,6 +25,7 @@ public class DuelCmd implements CommandExecutor
         new LeaveDuelsSubCmd(plugin);
         new KitsDuelsSubCmd(plugin);
         new LoadStatsDuelsSubCmd(plugin);
+        new GetStatsDuelsSubCmd(plugin);
     }
 
     @Override

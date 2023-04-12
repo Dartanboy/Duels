@@ -7,6 +7,7 @@ import me.dartanman.duels.stats.db.impl.StatisticsDatabaseYAML;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +16,7 @@ public class StatisticsManager
 {
 
     private final Duels plugin;
-    private FileConfiguration statsFile;
+    private FileConfiguration statsFile = new YamlConfiguration();
     private File statsF;
     private final StatisticsDatabase statsDB;
 
