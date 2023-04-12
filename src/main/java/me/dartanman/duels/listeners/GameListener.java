@@ -47,7 +47,7 @@ public class GameListener implements Listener
                         }
                         arena.getGame().kill(player);
                         UUID uuid = player.getUniqueId();
-                        db.setDeaths(uuid, db.getDeaths(uuid));
+                        db.setDeaths(uuid, db.getDeaths(uuid) + 1);
                         event.setCancelled(true);
                     }
                 }

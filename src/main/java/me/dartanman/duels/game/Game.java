@@ -60,8 +60,8 @@ public class Game
             arena.sendMessage(playerTwo.getName() + " wins!");
             UUID winnerUUID = playerTwo.getUniqueId();
             UUID loserUUID = playerOne.getUniqueId();
-            db.setWins(winnerUUID, db.getWins(winnerUUID));
-            db.setLosses(loserUUID, db.getLosses(loserUUID));
+            db.setWins(winnerUUID, db.getWins(winnerUUID) + 1);
+            db.setLosses(loserUUID, db.getLosses(loserUUID) + 1);
         }
         else
         {
@@ -69,8 +69,8 @@ public class Game
             arena.sendMessage(playerOne.getName() + " wins!");
             UUID winnerUUID = playerOne.getUniqueId();
             UUID loserUUID = playerTwo.getUniqueId();
-            db.setWins(winnerUUID, db.getWins(winnerUUID));
-            db.setLosses(loserUUID, db.getLosses(loserUUID));
+            db.setWins(winnerUUID, db.getWins(winnerUUID) + 1);
+            db.setLosses(loserUUID, db.getLosses(loserUUID) + 1);
         }
 
         arena.reset();
