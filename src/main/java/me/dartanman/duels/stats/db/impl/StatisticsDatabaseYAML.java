@@ -82,8 +82,7 @@ public class StatisticsDatabaseYAML implements StatisticsDatabase
     @Override
     public boolean isRegistered(UUID uuid)
     {
-        return Objects.requireNonNull(manager.getStatsConfig().getConfigurationSection("Statistics"))
-                .getKeys(false).contains(uuid.toString());
+        return manager.getStatsConfig().contains("Statistics." + uuid.toString());
     }
 
     @Override
