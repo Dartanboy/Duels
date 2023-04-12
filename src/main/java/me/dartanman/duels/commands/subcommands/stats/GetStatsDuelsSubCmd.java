@@ -33,6 +33,11 @@ public class GetStatsDuelsSubCmd extends DuelsSubCommand
     @Override
     public boolean execute(CommandSender sender, String[] args)
     {
+        if(!sender.hasPermission("duels.stats"))
+        {
+            noPerm(sender);
+            return true;
+        }
         if(args.length == 0)
         {
             if(sender instanceof Player player)

@@ -32,6 +32,11 @@ public class KitsDuelsSubCmd extends DuelsSubCommand
             {
                 if(args[0].equalsIgnoreCase("list"))
                 {
+                    if(!sender.hasPermission("duels.kits.list"))
+                    {
+                        noPerm(sender);
+                        return true;
+                    }
                     for(Kit kit : plugin.getKitManager().getKitList())
                     {
                         player.sendMessage("- " + kit.getName());
@@ -48,6 +53,11 @@ public class KitsDuelsSubCmd extends DuelsSubCommand
             {
                 if(args[0].equalsIgnoreCase("create"))
                 {
+                    if(!sender.hasPermission("duels.kits.create"))
+                    {
+                        noPerm(sender);
+                        return true;
+                    }
                     String kitName = args[1];
                     for(Kit kit : plugin.getKitManager().getKitList())
                     {
@@ -66,6 +76,11 @@ public class KitsDuelsSubCmd extends DuelsSubCommand
                 }
                 else if (args[0].equalsIgnoreCase("delete"))
                 {
+                    if(!sender.hasPermission("duels.kits.delete"))
+                    {
+                        noPerm(sender);
+                        return true;
+                    }
                     String kitName = args[1];
                     plugin.getKitManager().deleteKit(kitName);
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&',
@@ -75,6 +90,11 @@ public class KitsDuelsSubCmd extends DuelsSubCommand
                 }
                 else if (args[0].equalsIgnoreCase("select"))
                 {
+                    if(!sender.hasPermission("duels.kits.select"))
+                    {
+                        noPerm(sender);
+                        return true;
+                    }
                     String kitName = args[1];
                     Kit kit = plugin.getKitManager().getKit(kitName);
                     if(kit != null)

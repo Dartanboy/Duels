@@ -14,6 +14,17 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Duels extends JavaPlugin
 {
 
+    /*
+    **This is Duels 3.2.0 Public Dev Build 3**
+I would not recommend using this on a Production server, as it is still missing a few smaller features, and _might_ have some bugs, as I have not tested this as rigorously as I would like to yet. That being said, it _should be_ rather stable. Perhaps even more stable than the current production-level version (Duels 3.1.3).
+
+**SOME STEPS YOU NEED TO TAKE TO UPGRADE FROM 3.1.3 (or lower)**
+1. Stop your server.
+2. Delete your old config.yml and your old Duels JAR file.
+3. Add the new Duels JAR file.
+4. If you wish to load the old tracked wins into the new statistics system, run the command /
+     */
+
     private ArenaManager arenaManager;
     private KitManager kitManager;
     private StatisticsManager statisticsManager;

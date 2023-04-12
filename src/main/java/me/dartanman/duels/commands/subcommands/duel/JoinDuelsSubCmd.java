@@ -21,6 +21,11 @@ public class JoinDuelsSubCmd extends DuelsSubCommand
     @Override
     public boolean execute(CommandSender sender, String[] args)
     {
+        if(!sender.hasPermission("duels.join"))
+        {
+            noPerm(sender);
+            return true;
+        }
         if(sender instanceof Player player)
         {
             if(args.length == 0)

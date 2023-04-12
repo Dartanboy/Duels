@@ -15,6 +15,11 @@ public class HelpDuelsSubCmd extends DuelsSubCommand
     @Override
     public boolean execute(CommandSender sender, String[] args)
     {
+        if(!sender.hasPermission("duels.help"))
+        {
+            noPerm(sender);
+            return true;
+        }
         if(args.length == 0)
         {
             for(String line : plugin.getConfig().getStringList("Messages.Help-Menu"))

@@ -21,6 +21,11 @@ public class LeaveDuelsSubCmd extends DuelsSubCommand
     @Override
     public boolean execute(CommandSender sender, String[] args)
     {
+        if(!sender.hasPermission("duels.leave"))
+        {
+            noPerm(sender);
+            return true;
+        }
         if(sender instanceof Player player)
         {
             if(args.length == 0)

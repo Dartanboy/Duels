@@ -19,6 +19,11 @@ public class ListArenasDuelsSubCmd extends DuelsSubCommand
     @Override
     public boolean execute(CommandSender sender, String[] args)
     {
+        if(!sender.hasPermission("duels.listarenas"))
+        {
+            noPerm(sender);
+            return true;
+        }
         if(args.length == 0)
         {
             for(Arena arena : plugin.getArenaManager().getArenaList())

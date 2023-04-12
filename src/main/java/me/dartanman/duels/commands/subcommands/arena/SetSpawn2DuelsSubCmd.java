@@ -19,6 +19,11 @@ public class SetSpawn2DuelsSubCmd extends DuelsSubCommand
     @Override
     public boolean execute(CommandSender sender, String[] args)
     {
+        if(!sender.hasPermission("duels.createarena"))
+        {
+            noPerm(sender);
+            return true;
+        }
         if(sender instanceof Player player)
         {
             if(args.length == 0)
