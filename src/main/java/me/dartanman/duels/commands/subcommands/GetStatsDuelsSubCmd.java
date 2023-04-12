@@ -17,9 +17,6 @@ public class GetStatsDuelsSubCmd extends DuelsSubCommand
 
     private void sendStatsCard(CommandSender sender, UUID target, String name)
     {
-
-        Player targetPlayer = Bukkit.getPlayer(target);
-
         for(String line : plugin.getConfig().getStringList("Messages.Stats-Card"))
         {
             line = ChatColor.translateAlternateColorCodes('&', line
