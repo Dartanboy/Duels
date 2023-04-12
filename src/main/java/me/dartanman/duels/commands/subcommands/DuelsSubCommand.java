@@ -35,6 +35,12 @@ public abstract class DuelsSubCommand
                 Objects.requireNonNull(plugin.getConfig().getString("Messages.Unknown-Command"))));
     }
 
+    protected void noPerm(CommandSender sender)
+    {
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                Objects.requireNonNull(plugin.getConfig().getString("Messages.No-Permission"))));
+    }
+
     protected void incorrectArgs(CommandSender sender, String suggestion)
     {
         sender.sendMessage(ChatColor.translateAlternateColorCodes('&',

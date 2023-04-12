@@ -1,7 +1,10 @@
 # Duels by Dartanman
 # Don't edit kits in the file... unless you're particularly confident in your ability to read/write in Base64!
+Statistics:
+  Storage-Type: 'YAML'
 Messages:
-  Countdown: "&aThe Duel begins in <seconds> second(s)!"
+  No-Permission: '&cInsufficient permissions.'
+  Countdown: '&aThe Duel begins in <seconds> second(s)!'
   Unknown-Command: '&cUnknown command. Try &e/duels help&c!'
   Incorrect-Args: '&cIncorrect args. Try &e<suggestion>&c!'
   No-Available-Arena: '&cUnfortunately, no Duel Arenas are available right now. Try again later!'
@@ -26,6 +29,13 @@ Messages:
     - '&6/duels finisharena&f: &eSave and finish the arena you are currently making'
     - '&6/duels kits list&f: &eList all kits'
     - '&6/duels kits <create/delete/select> <kit name>&f: &eCreates <kit name> with your current inventory, deletes <kit name>, or selects <kit name>, respectively'
+  Stats-Card:
+    - '&e=========='
+    - '&eWins&f: &6<wins>'
+    - '&eLosses&f: &6<losses>'
+    - '&eKills&f: &6<kills>'
+    - '&eDeaths&f: &6<deaths>'
+    - '&e=========='
 Kits:
   0:
     Name: Default
