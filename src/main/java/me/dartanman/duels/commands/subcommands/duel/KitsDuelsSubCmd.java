@@ -1,6 +1,7 @@
-package me.dartanman.duels.commands.subcommands;
+package me.dartanman.duels.commands.subcommands.duel;
 
 import me.dartanman.duels.Duels;
+import me.dartanman.duels.commands.subcommands.DuelsSubCommand;
 import me.dartanman.duels.game.kits.Kit;
 import me.dartanman.duels.game.kits.KitManager;
 import org.bukkit.ChatColor;

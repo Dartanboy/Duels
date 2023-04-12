@@ -2,6 +2,12 @@ package me.dartanman.duels.commands;
 
 import me.dartanman.duels.Duels;
 import me.dartanman.duels.commands.subcommands.*;
+import me.dartanman.duels.commands.subcommands.arena.*;
+import me.dartanman.duels.commands.subcommands.duel.JoinDuelsSubCmd;
+import me.dartanman.duels.commands.subcommands.duel.KitsDuelsSubCmd;
+import me.dartanman.duels.commands.subcommands.duel.LeaveDuelsSubCmd;
+import me.dartanman.duels.commands.subcommands.stats.GetStatsDuelsSubCmd;
+import me.dartanman.duels.commands.subcommands.stats.LoadStatsDuelsSubCmd;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
