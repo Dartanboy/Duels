@@ -5,6 +5,7 @@ import me.dartanman.duels.game.Countdown;
 import me.dartanman.duels.game.Game;
 import me.dartanman.duels.game.GameState;
 import me.dartanman.duels.game.kits.KitManager;
+import me.dartanman.duels.stats.db.StatisticsDatabase;
 import me.dartanman.duels.utils.PlayerRestoration;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -122,6 +123,11 @@ public class Arena
     public KitManager getKitManager()
     {
         return plugin.getKitManager();
+    }
+
+    public StatisticsDatabase getStatisticsDatabase()
+    {
+        return plugin.getStatisticsManager().getStatsDB();
     }
 
     /*
