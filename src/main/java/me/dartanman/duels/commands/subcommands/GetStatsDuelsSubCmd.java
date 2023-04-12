@@ -15,15 +15,19 @@ public class GetStatsDuelsSubCmd extends DuelsSubCommand
         super(plugin, "stats");
     }
 
-    private void sendStatsCard(CommandSender sender, UUID target)
+    private void sendStatsCard(CommandSender sender, UUID target, String name)
     {
+
+        Player targetPlayer = Bukkit.getPlayer(target);
+
         for(String line : plugin.getConfig().getStringList("Messages.Stats-Card"))
         {
             line = ChatColor.translateAlternateColorCodes('&', line
                     .replace("<wins>", plugin.getStatisticsManager().getStatsDB().getWins(target) + "")
                     .replace("<losses>", plugin.getStatisticsManager().getStatsDB().getLosses(target) + "")
                     .replace("<kills>", plugin.getStatisticsManager().getStatsDB().getKills(target) + "")
-                    .replace("<deaths>", plugin.getStatisticsManager().getStatsDB().getDeaths(target) + ""));
+                    .replace("<deaths>", plugin.getStatisticsManager().getStatsDB().getDeaths(target) + "")
+                    .replace("<name>", name));
             sender.sendMessage(line);
         }
     }
@@ -35,7 +39,7 @@ public class GetStatsDuelsSubCmd extends DuelsSubCommand
         {
             if(sender instanceof Player player)
             {
-                sendStatsCard(sender, player.getUniqueId());
+                sendStatsCard(sender, player.getUniqueId(), player.getName());
                 return true;
             }
             else
@@ -51,7 +55,7 @@ public class GetStatsDuelsSubCmd extends DuelsSubCommand
             if(target != null)
             {
                 UUID uuid = target.getUniqueId();
-                sendStatsCard(sender, uuid);
+                sendStatsCard(sender, uuid, target.getName());
                 return true;
             }
             else
@@ -59,7 +63,7 @@ public class GetStatsDuelsSubCmd extends DuelsSubCommand
                 UUID uuid = plugin.getStatisticsManager().getStatsDB().getUUID(targetName);
                 if(uuid != null)
                 {
-                    sendStatsCard(sender, uuid);
+                    sendStatsCard(sender, uuid, targetName);
                     return true;
                 }
                 else

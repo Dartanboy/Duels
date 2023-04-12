@@ -30,12 +30,13 @@ Messages:
     - '&6/duels kits list&f: &eList all kits'
     - '&6/duels kits <create/delete/select> <kit name>&f: &eCreates <kit name> with your current inventory, deletes <kit name>, or selects <kit name>, respectively'
   Stats-Card:
-    - '&e=========='
+    - '&e============='
+    - '&8<name>''s Stats'
     - '&eWins&f: &6<wins>'
     - '&eLosses&f: &6<losses>'
     - '&eKills&f: &6<kills>'
     - '&eDeaths&f: &6<deaths>'
-    - '&e=========='
+    - '&e============='
 Kits:
   0:
     Name: Default
