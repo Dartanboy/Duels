@@ -1,7 +1,7 @@
 package me.dartanman.duels.stats.db.impl;
 
+import me.dartanman.duels.stats.StatisticsManager;
 import me.dartanman.duels.stats.db.StatisticsDatabase;
-import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -9,67 +9,89 @@ import java.util.UUID;
 public class StatisticsDatabaseYAML implements StatisticsDatabase
 {
 
-    private FileConfiguration statsConfig;
+    private final StatisticsManager manager;
 
-    public StatisticsDatabaseYAML(FileConfiguration statsConfig)
+    public StatisticsDatabaseYAML(StatisticsManager manager)
     {
-        this.statsConfig = statsConfig;
+        this.manager = manager;
     }
 
     @Override
     public int getWins(UUID uuid)
     {
-        return statsConfig.getInt("Statistics." + uuid.toString() + ".Wins");
+        return manager.getStatsConfig().getInt("Statistics." + uuid.toString() + ".Wins");
     }
 
     @Override
     public int getLosses(UUID uuid)
     {
-        return statsConfig.getInt("Statistics." + uuid.toString() + ".Losses");
+        return manager.getStatsConfig().getInt("Statistics." + uuid.toString() + ".Losses");
     }
 
     @Override
     public int getKills(UUID uuid)
     {
-        return statsConfig.getInt("Statistics." + uuid.toString() + ".Kills");
+        return manager.getStatsConfig().getInt("Statistics." + uuid.toString() + ".Kills");
     }
 
     @Override
     public int getDeaths(UUID uuid)
     {
-        return statsConfig.getInt("Statistics." + uuid.toString() + ".Deaths");
+        return manager.getStatsConfig().getInt("Statistics." + uuid.toString() + ".Deaths");
     }
 
     @Override
     public void setWins(UUID uuid, int wins)
     {
-        statsConfig.set("Statistics." + uuid.toString() + ".Wins", wins);
+        manager.getStatsConfig().set("Statistics." + uuid.toString() + ".Wins", wins);
+        manager.saveStatsConfig();
     }
 
     @Override
     public void setLosses(UUID uuid, int losses)
     {
-        statsConfig.set("Statistics." + uuid.toString() + ".Losses", losses);
+        manager.getStatsConfig().set("Statistics." + uuid.toString() + ".Losses", losses);
+        manager.saveStatsConfig();
     }
 
     @Override
     public void setKills(UUID uuid, int kills)
     {
-        statsConfig.set("Statistics." + uuid.toString() + ".Kills", kills);
+        manager.getStatsConfig().set("Statistics." + uuid.toString() + ".Kills", kills);
+        manager.saveStatsConfig();
     }
 
     @Override
     public void setDeaths(UUID uuid, int deaths)
     {
-        statsConfig.set("Statistics." + uuid.toString() + ".Deaths", deaths);
+        manager.getStatsConfig().set("Statistics." + uuid.toString() + ".Deaths", deaths);
+        manager.saveStatsConfig();
+    }
+
+    @Override
+    public void registerNewPlayer(UUID uuid, String name)
+    {
+        manager.getStatsConfig().set("Statistics." + uuid.toString() + "Last-Known-Name", name);
+        manager.saveStatsConfig();
+        setWins(uuid, 0);
+        setLosses(uuid, 0);
+        setKills(uuid, 0);
+        setDeaths(uuid, 0);
+    }
+
+    @Override
+    public boolean isRegistered(UUID uuid)
+    {
+        return Objects.requireNonNull(manager.getStatsConfig().getConfigurationSection("Statistics"))
+                .getKeys(false).contains(uuid.toString());
     }
 
     @Override
     public UUID getUUID(String playerName)
     {
-        for(String uuidStr : Objects.requireNonNull(statsConfig.getConfigurationSection("Statistics")).getKeys(false))
+        for(String uuidStr : Objects.requireNonNull(manager.getStatsConfig().getConfigurationSection("Statistics")).getKeys(false))
         {
-            if(Objects.requireNonNull(statsConfig.getString("Statistics." + uuidStr + ".Last-Known-Name")).equalsIgnoreCase(playerName))
+            if(Objects.requireNonNull(manager.getStatsConfig().getString("Statistics." + uuidStr + ".Last-Known-Name")).equalsIgnoreCase(playerName))
             {
                 return UUID.fromString(uuidStr);
             }

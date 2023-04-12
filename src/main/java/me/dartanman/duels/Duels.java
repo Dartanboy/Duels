@@ -5,6 +5,7 @@ import me.dartanman.duels.listeners.ArenaListener;
 import me.dartanman.duels.game.arenas.ArenaManager;
 import me.dartanman.duels.commands.DuelCmd;
 import me.dartanman.duels.listeners.GameListener;
+import me.dartanman.duels.listeners.StatsListener;
 import me.dartanman.duels.stats.StatisticsManager;
 import me.dartanman.duels.stats.db.DatabaseType;
 import org.bukkit.Bukkit;
@@ -31,6 +32,7 @@ public class Duels extends JavaPlugin
 
         getServer().getPluginManager().registerEvents(new ArenaListener(this), this);
         getServer().getPluginManager().registerEvents(new GameListener(this), this);
+        getServer().getPluginManager().registerEvents(new StatsListener(this), this);
     }
 
     private void setupStatisticsManager()

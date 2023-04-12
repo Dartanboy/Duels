@@ -21,6 +21,10 @@ public interface StatisticsDatabase
 
     public void setDeaths(UUID uuid, int deaths);
 
+    public void registerNewPlayer(UUID uuid, String name);
+
+    public boolean isRegistered(UUID uuid);
+
     public UUID getUUID(String playerName);
 
 }

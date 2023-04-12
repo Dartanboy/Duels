@@ -16,7 +16,7 @@ public class StatisticsManager
 {
 
     private final Duels plugin;
-    private FileConfiguration statsFile = new YamlConfiguration();
+    private final FileConfiguration statsFile = new YamlConfiguration();
     private File statsF;
     private final StatisticsDatabase statsDB;
 
@@ -33,7 +33,7 @@ public class StatisticsManager
             Bukkit.getLogger().info("[Duels] Using YAML File storage for Statistics");
             createStatsConfig();
             saveStatsConfig();
-            return new StatisticsDatabaseYAML(statsFile);
+            return new StatisticsDatabaseYAML(this);
         }
         else
         {
