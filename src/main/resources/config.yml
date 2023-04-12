@@ -29,6 +29,7 @@ Messages:
     - '&6/duels finisharena&f: &eSave and finish the arena you are currently making'
     - '&6/duels kits list&f: &eList all kits'
     - '&6/duels kits <create/delete/select> <kit name>&f: &eCreates <kit name> with your current inventory, deletes <kit name>, or selects <kit name>, respectively'
+    - '&6/duels stats [player]&f: &eView your own stats, or [player]''s stats'
   Stats-Card:
     - '&e============='
     - '&8<name>''s Stats'
