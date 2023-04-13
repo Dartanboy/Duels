@@ -26,7 +26,7 @@ public class ItemSerializationUtils
             if(meta.hasDisplayName())
             {
                 String displayName = meta.getDisplayName();
-                metaStr = metaStr + "displayName:" + displayName;
+                metaStr = metaStr + "displayName:" + displayName.replace(" ", "_");
             }
             if(meta.hasCustomModelData())
             {
@@ -98,7 +98,7 @@ public class ItemSerializationUtils
                 if(str.startsWith("displayname:"))
                 {
                     String[] name = str.split(":");
-                    meta.setDisplayName(name[1]);
+                    meta.setDisplayName(name[1].replace("_", " "));
                 }
                 else if(str.startsWith("custommodeldata:"))
                 {
@@ -116,7 +116,7 @@ public class ItemSerializationUtils
                 else if(str.contains(":"))
                 {
                     String[] matcher = str.split(":");
-                    Enchantment enchantment = Enchantment.getByName(matcher[0]);
+                    Enchantment enchantment = Enchantment.getByName(matcher[0].toUpperCase());
                     if(enchantment != null)
                     {
                         int level = Integer.parseInt(matcher[1]);
@@ -124,7 +124,7 @@ public class ItemSerializationUtils
                     }
                     for(ItemFlag anyFlag : ItemFlag.values())
                     {
-                        if(anyFlag.name().equalsIgnoreCase(matcher[0]) && str.split(":")[1].equalsIgnoreCase("true"))
+                        if(anyFlag.name().equalsIgnoreCase(matcher[0].toUpperCase()) && str.split(":")[1].equalsIgnoreCase("true"))
                         {
                             meta.addItemFlags(anyFlag);
                         }
