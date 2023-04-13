@@ -15,7 +15,7 @@ public class ItemSerializationUtils
         String matStr = item.getType().toString();
         int amount = item.getAmount();
 
-        String result = "{ material:" + matStr + " amount:" + amount + "meta:" +
+        String result = "{ material:" + matStr + " amount:" + amount + " meta:" +
                 "{ %s } }";
 
         if(item.hasItemMeta())
