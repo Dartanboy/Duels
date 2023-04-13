@@ -1,8 +1,7 @@
 package me.dartanman.duels.game.kits;
 
 import me.dartanman.duels.Duels;
-import me.dartanman.duels.game.arenas.Arena;
-import me.dartanman.duels.utils.Base64Utils;
+import me.dartanman.duels.utils.ItemSerializationUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -79,16 +78,16 @@ public class KitManager
             assert bootsBase64 != null;
 
             ItemStack[] armor = new ItemStack[4];
-            armor[3] = Base64Utils.fromBase64(helmetBase64);
-            armor[2] = Base64Utils.fromBase64(chestplateBase64);
-            armor[1] = Base64Utils.fromBase64(leggingsBase64);
-            armor[0] = Base64Utils.fromBase64(bootsBase64);
+            armor[3] = ItemSerializationUtils.deserialize(helmetBase64);
+            armor[2] = ItemSerializationUtils.deserialize(chestplateBase64);
+            armor[1] = ItemSerializationUtils.deserialize(leggingsBase64);
+            armor[0] = ItemSerializationUtils.deserialize(bootsBase64);
 
             ItemStack[] inventory = new ItemStack[inventoryBase64.size()];
             int i = 0;
             for(String base64 : inventoryBase64)
             {
-                inventory[i++] = Base64Utils.fromBase64(base64);
+                inventory[i++] = ItemSerializationUtils.deserialize(base64);
             }
 
             kitList.add(new Kit(id, name, armor, inventory));
@@ -124,16 +123,16 @@ public class KitManager
         inventory[inventory.length - 5] = null;
 
         plugin.getConfig().set("Kits." + id + ".Name", kitName);
-        plugin.getConfig().set("Kits." + id + ".Armor.Helmet", Base64Utils.toBase64(helmet));
-        plugin.getConfig().set("Kits." + id + ".Armor.Chestplate", Base64Utils.toBase64(chestplate));
-        plugin.getConfig().set("Kits." + id + ".Armor.Leggings", Base64Utils.toBase64(leggings));
-        plugin.getConfig().set("Kits." + id + ".Armor.Boots", Base64Utils.toBase64(boots));
+        plugin.getConfig().set("Kits." + id + ".Armor.Helmet", ItemSerializationUtils.serialize(helmet));
+        plugin.getConfig().set("Kits." + id + ".Armor.Chestplate", ItemSerializationUtils.serialize(chestplate));
+        plugin.getConfig().set("Kits." + id + ".Armor.Leggings", ItemSerializationUtils.serialize(leggings));
+        plugin.getConfig().set("Kits." + id + ".Armor.Boots", ItemSerializationUtils.serialize(boots));
         List<String> invList = new ArrayList<>();
         for(ItemStack item : inventory)
         {
             if(item != null)
             {
-                invList.add(Base64Utils.toBase64(item));
+                invList.add(ItemSerializationUtils.serialize(item));
             }
         }
 
