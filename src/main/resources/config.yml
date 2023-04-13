@@ -19,6 +19,8 @@ Messages:
   Kit-Created: '&aKit &e<kit_name> &2&lcreated&a!'
   Kit-Deleted: '&aKit &e<kit_name> &4&ldeleted&a!'
   Kit-Selected: '&aSelected Kit &e<kit_name>&a!'
+  Leaderboard-Header: '&9Duels <type> Leaderboard&f:'
+  Leaderboard-Format: '<place>. &e<player>&f: &6<stat>'
   Help-Menu:
     - '&9Duels Help Menu&f:'
     - '&6/duels help&f: &eDisplay this help menu'
@@ -30,6 +32,7 @@ Messages:
     - '&6/duels kits list&f: &eList all kits'
     - '&6/duels kits <create/delete/select> <kit name>&f: &eCreates <kit name> with your current inventory, deletes <kit name>, or selects <kit name>, respectively'
     - '&6/duels stats [player]&f: &eView your own stats, or [player]''s stats'
+    - '&6/duels top [kills/wins]&f: &eView the top 10 winners and killers'
   Stats-Card:
     - '&e============='
     - '&8<name>''s Stats'

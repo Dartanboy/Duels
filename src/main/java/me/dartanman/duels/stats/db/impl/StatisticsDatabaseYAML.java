@@ -3,6 +3,7 @@ package me.dartanman.duels.stats.db.impl;
 import me.dartanman.duels.stats.StatisticsManager;
 import me.dartanman.duels.stats.db.StatisticsDatabase;
 
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -96,5 +97,82 @@ public class StatisticsDatabaseYAML implements StatisticsDatabase
             }
         }
         return null;
+    }
+
+    @Override
+    public String getLastKnownName(UUID uuid)
+    {
+        for(String uuidStr : Objects.requireNonNull(manager.getStatsConfig().getConfigurationSection("Statistics")).getKeys(false))
+        {
+            if(uuidStr.equals(uuid.toString()))
+            {
+                return manager.getStatsConfig().getString("Statistics." + uuidStr + ".Last-Known-Name");
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public HashMap<UUID, Integer> getTopTenWins()
+    {
+        HashMap<UUID, Integer> allWins = new HashMap<>();
+        HashMap<UUID, Integer> topTenWins = new HashMap<>();
+
+        for(String uuidStr : Objects.requireNonNull(manager.getStatsConfig().getConfigurationSection("Statistics")).getKeys(false))
+        {
+            UUID uuid = UUID.fromString(uuidStr);
+            allWins.put(uuid, getWins(uuid));
+        }
+
+        int topAmt = Math.min(10, allWins.size());
+        for(int i = 0; i < topAmt; i++)
+        {
+            UUID maxUUID = null;
+            int maxWins = -1;
+            for(UUID uuid : allWins.keySet())
+            {
+                int curWins = allWins.get(uuid);
+                if(curWins > maxWins)
+                {
+                    maxUUID = uuid;
+                    maxWins = curWins;
+                }
+            }
+            topTenWins.put(maxUUID, maxWins);
+            allWins.remove(maxUUID);
+        }
+        return topTenWins;
+    }
+
+    @Override
+    public HashMap<UUID, Integer> getTopTenKills()
+    {
+        HashMap<UUID, Integer> allKills = new HashMap<>();
+        HashMap<UUID, Integer> topTenKills = new HashMap<>();
+
+        for(String uuidStr : Objects.requireNonNull(manager.getStatsConfig().getConfigurationSection("Statistics")).getKeys(false))
+        {
+            UUID uuid = UUID.fromString(uuidStr);
+            allKills.put(uuid, getKills(uuid));
+        }
+
+        int topAmt = Math.min(10, allKills.size());
+        for(int i = 0; i < topAmt; i++)
+        {
+            UUID maxUUID = null;
+            int maxKills = -1;
+            for(UUID uuid : allKills.keySet())
+            {
+                int curKills = allKills.get(uuid);
+                if(curKills > maxKills)
+                {
+                    maxUUID = uuid;
+                    maxKills = curKills;
+                }
+            }
+            topTenKills.put(maxUUID, maxKills);
+            allKills.remove(maxUUID);
+        }
+        return topTenKills;
     }
 }
