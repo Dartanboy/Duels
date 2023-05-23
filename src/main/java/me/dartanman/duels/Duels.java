@@ -1,5 +1,6 @@
 package me.dartanman.duels;
 
+import me.dartanman.duels.commands.DuelTabCompleter;
 import me.dartanman.duels.game.kits.KitManager;
 import me.dartanman.duels.listeners.ArenaListener;
 import me.dartanman.duels.game.arenas.ArenaManager;
@@ -29,6 +30,7 @@ public class Duels extends JavaPlugin
         setupStatisticsManager();
 
         getCommand("duel").setExecutor(new DuelCmd(this));
+        getCommand("duel").setTabCompleter(new DuelTabCompleter(this));
 
         getServer().getPluginManager().registerEvents(new ArenaListener(this), this);
         getServer().getPluginManager().registerEvents(new GameListener(this), this);
