@@ -22,6 +22,9 @@ public class Duels extends JavaPlugin
     @Override
     public void onEnable()
     {
+        int pluginId = 12801;
+        Metrics metrics = new Metrics(this, pluginId);
+
         getConfig().options().copyDefaults(true);
         saveConfig();
 
