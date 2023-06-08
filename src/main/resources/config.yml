@@ -1,0 +1,55 @@
+# Duels by Dartanman
+# Don't edit kits in the file... unless you're particularly confident in your ability to read/write in Base64!
+Statistics:
+  Storage-Type: 'YAML'
+Messages:
+  No-Permission: '&cInsufficient permissions.'
+  Countdown: '&aThe Duel begins in <seconds> second(s)!'
+  Unknown-Command: '&cUnknown command. Try &e/duels help&c!'
+  Incorrect-Args: '&cIncorrect args. Try &e<suggestion>&c!'
+  No-Available-Arena: '&cUnfortunately, no Duel Arenas are available right now. Try again later!'
+  Arena-Not-Available: '&cUnfortunately, that particular arena is not available right now. Pick another or try again later!'
+  Joined-Arena: '&aYou have joined the Duel Arena called &e<arena_name>'
+  Player-Left-Cancelled: '&cA player has left the duel and the countdown has been cancelled.'
+  Invalid-Arena-Id: '&c<arg> is not a valid arena id (either it does not exist or is a name, not an id)'
+  Arena-List-Format: '&9<id> &f- &e<arena_name> &f- &6<state>'
+  Arena-Created: '&aArena &e<arena_name> &acreated! &e&lRemember to set its lobby and spawn locations!'
+  Arena-Not-Finished: '&cArena is not finished! Ensure it has both spawnpoints and a lobby location set!'
+  Arena-Finished: '&aArena has been finished and is now joinable!'
+  Kit-Created: '&aKit &e<kit_name> &2&lcreated&a!'
+  Kit-Deleted: '&aKit &e<kit_name> &4&ldeleted&a!'
+  Kit-Selected: '&aSelected Kit &e<kit_name>&a!'
+  Leaderboard-Header: '&9Duels <type> Leaderboard&f:'
+  Leaderboard-Format: '<place>. &e<player>&f: &6<stat>'
+  Help-Menu:
+    - '&9Duels Help Menu&f:'
+    - '&6/duels help&f: &eDisplay this help menu'
+    - '&6/duels join [id]&f: &eJoin an available arena or the arena with the given id'
+    - '&6/duels listarenas&f: &eList all arenas'
+    - '&6/duels createarena <arena name>&f: &eCreate a new arena called <arena name>'
+    - '&6/duels setlobby &7or &6setspawn1 &7or &6setspawn2&f: &eSet the respective location of the arena you are currently making'
+    - '&6/duels finisharena&f: &eSave and finish the arena you are currently making'
+    - '&6/duels kits list&f: &eList all kits'
+    - '&6/duels kits <create/delete/select> <kit name>&f: &eCreates <kit name> with your current inventory, deletes <kit name>, or selects <kit name>, respectively'
+    - '&6/duels stats [player]&f: &eView your own stats, or [player]''s stats'
+    - '&6/duels top [kills/wins]&f: &eView the top 10 winners and killers'
+  Stats-Card:
+    - '&e============='
+    - '&8<name>''s Stats'
+    - '&eWins&f: &6<wins>'
+    - '&eLosses&f: &6<losses>'
+    - '&eKills&f: &6<kills>'
+    - '&eDeaths&f: &6<deaths>'
+    - '&e============='
+Kits:
+  0:
+    Name: Default
+    Armor:
+      Helmet: '{ material:iron_helmet amount:1 meta:{ } }'
+      Chestplate: '{ material:iron_chestplate amount:1 meta:{ } }'
+      Leggings: '{ material:iron_leggings amount:1 meta:{ } }'
+      Boots: '{ material:iron_boots amount:1 meta:{ } }'
+    Inventory:
+      - '{ material:iron_sword amount:1 meta:{ } }'
+      - '{ material:bread amount:64 meta:{ } }'
+Arenas:
