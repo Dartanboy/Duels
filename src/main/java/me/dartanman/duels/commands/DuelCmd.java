@@ -9,6 +9,7 @@ import me.dartanman.duels.commands.subcommands.duel.LeaveDuelsSubCmd;
 import me.dartanman.duels.commands.subcommands.stats.GetStatsDuelsSubCmd;
 import me.dartanman.duels.commands.subcommands.stats.LeaderboardDuelsSubCmd;
 import me.dartanman.duels.commands.subcommands.stats.LoadStatsDuelsSubCmd;
+import me.dartanman.duels.commands.subcommands.stats.StatsFileToSQLCmd;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -34,6 +35,7 @@ public class DuelCmd implements CommandExecutor
         new LoadStatsDuelsSubCmd(plugin);
         new GetStatsDuelsSubCmd(plugin);
         new LeaderboardDuelsSubCmd(plugin);
+        new StatsFileToSQLCmd(plugin);
     }
 
     @Override
