@@ -45,11 +45,11 @@ public class StatisticsDatabaseSQL implements StatisticsDatabase
 
     private Connection getConnection()
     {
-        String address = plugin.getConfig().getString("Statistics.SQL.Address");
-        String port = plugin.getConfig().getString("Statistics.SQL.Port");
-        String db = plugin.getConfig().getString("Statistics.SQL.Database");
-        String user = plugin.getConfig().getString("Statistics.SQL.Username");
-        String pass = plugin.getConfig().getString("Statistics.SQL.Password");
+        String address = plugin.getConfig().getString("Statistics.SQL-Info.Address");
+        String port = plugin.getConfig().getString("Statistics.SQL-Info.Port");
+        String db = plugin.getConfig().getString("Statistics.SQL-Info.Database");
+        String user = plugin.getConfig().getString("Statistics.SQL-Info.Username");
+        String pass = plugin.getConfig().getString("Statistics.SQL-Info.Password");
 
         final String DB_URL = "jdbc:mysql://" + address + ":" + port + "/" + db + "?characterEncoding=utf8";
         try
