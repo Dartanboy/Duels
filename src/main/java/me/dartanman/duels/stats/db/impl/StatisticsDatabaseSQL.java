@@ -326,15 +326,49 @@ public class StatisticsDatabaseSQL implements StatisticsDatabase
     @Override
     public HashMap<UUID, Integer> getTopTenWins()
     {
-        // TODO: Sort with SQL because that'll be WAY faster
-        return null;
+        Connection connection = getConnection();
+        HashMap<UUID, Integer> lbMap = new HashMap<>();
+        try
+        {
+            PreparedStatement stmt = connection.prepareStatement(Constants.GET_TOP_TEN_WINS);
+            ResultSet result = stmt.executeQuery();
+            while(result.next())
+            {
+                lbMap.put(UUID.fromString(result.getString("Player_UUID")), result.getInt("Wins"));
+            }
+            result.close();
+            stmt.close();
+        }
+        catch (SQLException e)
+        {
+            Bukkit.getLogger().severe("Duels experienced an error while attempting to retrieve top wins from the SQL Database!");
+            Bukkit.getLogger().severe(e.toString());
+        }
+        return lbMap;
     }
 
     @Override
     public HashMap<UUID, Integer> getTopTenKills()
     {
-        // TODO: Sort with SQL because that'll be WAY faster
-        return null;
+        Connection connection = getConnection();
+        HashMap<UUID, Integer> lbMap = new HashMap<>();
+        try
+        {
+            PreparedStatement stmt = connection.prepareStatement(Constants.GET_TOP_TEN_KILLS);
+            ResultSet result = stmt.executeQuery();
+            while(result.next())
+            {
+                lbMap.put(UUID.fromString(result.getString("Player_UUID")), result.getInt("Kills"));
+            }
+            result.close();
+            stmt.close();
+        }
+        catch (SQLException e)
+        {
+            Bukkit.getLogger().severe("Duels experienced an error while attempting to retrieve top kills from the SQL Database!");
+            Bukkit.getLogger().severe(e.toString());
+        }
+        return lbMap;
     }
 
     private static class Constants
@@ -370,5 +404,9 @@ public class StatisticsDatabaseSQL implements StatisticsDatabase
         public static final String SET_KILLS_STMT = "UPDATE duels_player SET Kills = ? WHERE Player_UUID = ?";
 
         public static final String SET_DEATHS_STMT = "UPDATE duels_player SET Deaths = ? WHERE Player_UUID = ?";
+
+        public static final String GET_TOP_TEN_WINS = "SELECT Player_UUID, Wins FROM duels_player ORDER BY Wins desc LIMIT 10";
+
+        public static final String GET_TOP_TEN_KILLS = "SELECT Player_UUID, Kills FROM duels_player ORDER BY Kills desc LIMIT 10";
     }
 }
