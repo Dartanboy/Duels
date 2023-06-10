@@ -46,10 +46,17 @@ public class Duels extends JavaPlugin
         assert storageType != null;
         if(storageType.equalsIgnoreCase("sql") || storageType.equalsIgnoreCase("mysql"))
         {
-            // This will be supported in the future
-            Bukkit.getLogger().info("[Duels] SQL is not yet supported. Using YAML...");
+            this.statisticsManager = new StatisticsManager(this, DatabaseType.SQL);
         }
-        this.statisticsManager = new StatisticsManager(this, DatabaseType.YAML);
+        else if (storageType.equalsIgnoreCase("yaml") || storageType.equalsIgnoreCase("yml"))
+        {
+            this.statisticsManager = new StatisticsManager(this, DatabaseType.YAML);
+        }
+        else
+        {
+            Bukkit.getLogger().warning("Duels does not recognize the Storage Option '" + storageType + "'. Opting for YAML (flat-file) storage.");
+            this.statisticsManager = new StatisticsManager(this, DatabaseType.YAML);
+        }
     }
 
     public ArenaManager getArenaManager()
@@ -68,3 +75,4 @@ public class Duels extends JavaPlugin
     }
 
 }
+

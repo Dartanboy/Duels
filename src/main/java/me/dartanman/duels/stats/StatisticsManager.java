@@ -3,6 +3,7 @@ package me.dartanman.duels.stats;
 import me.dartanman.duels.Duels;
 import me.dartanman.duels.stats.db.DatabaseType;
 import me.dartanman.duels.stats.db.StatisticsDatabase;
+import me.dartanman.duels.stats.db.impl.StatisticsDatabaseSQL;
 import me.dartanman.duels.stats.db.impl.StatisticsDatabaseYAML;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -37,9 +38,14 @@ public class StatisticsManager
             saveStatsConfig();
             return new StatisticsDatabaseYAML(this);
         }
+        else if(dbType == DatabaseType.SQL)
+        {
+            Bukkit.getLogger().info("[Duels] Using SQL Database for Statistics");
+            return new StatisticsDatabaseSQL(plugin, this);
+        }
         else
         {
-            // TODO: MySQL (and maybe MongoDB)
+            // Maybe add MongoDB someday?
             return null;
         }
     }

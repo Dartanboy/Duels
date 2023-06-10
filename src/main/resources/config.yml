@@ -2,6 +2,12 @@
 # Don't edit kits in the file... unless you're particularly confident in your ability to read/write in Base64!
 Statistics:
   Storage-Type: 'YAML'
+  SQL-Info:
+    Address: 'localhost'
+    Port: '3306'
+    Database: 'schema'
+    Username: 'admin'
+    Password: 'password'
 Messages:
   No-Permission: '&cInsufficient permissions.'
   Countdown: '&aThe Duel begins in <seconds> second(s)!'
