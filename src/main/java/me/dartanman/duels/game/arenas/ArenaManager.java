@@ -56,6 +56,16 @@ public class ArenaManager
         }
     }
 
+    public void delete(int id)
+    {
+        Arena arena = getArena(id);
+        arenaList.remove(arena);
+        String idStr = String.valueOf(id);
+
+        plugin.getConfig().set("Arenas." + idStr, null);
+        plugin.saveConfig();
+    }
+
     public void save(ArenaConfig arenaConfig)
     {
         int id = arenaConfig.getId();

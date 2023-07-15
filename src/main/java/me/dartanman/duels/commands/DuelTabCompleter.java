@@ -31,6 +31,7 @@ public class DuelTabCompleter implements TabCompleter
             recommend.add("leave");
             recommend.add("listarenas");
             recommend.add("createarena");
+            recommend.add("deletearena");
             recommend.add("setlobby");
             recommend.add("setspawn1");
             recommend.add("setspawn2");

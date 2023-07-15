@@ -26,6 +26,7 @@ public class DuelCmd implements CommandExecutor
         new ListArenasDuelsSubCmd(plugin);
         new HelpDuelsSubCmd(plugin);
         new CreateArenaDuelsSubCmd(plugin);
+        new DeleteArenaDuelsSubCmd(plugin);
         new SetLobbyDuelsSubCmd(plugin);
         new SetSpawn1DuelsSubCmd(plugin);
         new SetSpawn2DuelsSubCmd(plugin);
