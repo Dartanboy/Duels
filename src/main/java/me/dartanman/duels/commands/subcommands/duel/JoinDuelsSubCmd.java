@@ -30,6 +30,13 @@ public class JoinDuelsSubCmd extends DuelsSubCommand
         {
             if(args.length == 0)
             {
+                Arena playerArena = plugin.getArenaManager().getArena(player);
+                if(playerArena != null)
+                {
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                            Objects.requireNonNull(plugin.getConfig().getString("Messages.Already-Joined"))));
+                    return true;
+                }
                 Arena available = findFirstArena();
                 if(available == null)
                 {
@@ -48,6 +55,13 @@ public class JoinDuelsSubCmd extends DuelsSubCommand
             }
             else if (args.length == 1)
             {
+                Arena playerArena = plugin.getArenaManager().getArena(player);
+                if(playerArena != null)
+                {
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                            Objects.requireNonNull(plugin.getConfig().getString("Messages.Already-Joined"))));
+                    return true;
+                }
                 int id;
                 try
                 {

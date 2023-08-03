@@ -27,6 +27,7 @@ Messages:
   Kit-Selected: '&aSelected Kit &e<kit_name>&a!'
   Leaderboard-Header: '&9Duels <type> Leaderboard&f:'
   Leaderboard-Format: '<place>. &e<player>&f: &6<stat>'
+  Already-Joined: '&cYou already joined an arena! You can''t join another until you leave the one you''re already in!'
   Help-Menu:
     - '&9Duels Help Menu&f:'
     - '&6/duels help&f: &eDisplay this help menu'
