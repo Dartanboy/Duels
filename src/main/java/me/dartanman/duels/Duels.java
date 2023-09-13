@@ -30,6 +30,10 @@ public class Duels extends JavaPlugin
         {
             new PapiHook(this).register();
         }
+        else
+        {
+            Bukkit.getLogger().warning("PlaceholderAPI not found! The plugin will still work, but you can't make leaderboards outside of the built-in leaderboard.");
+        }
 
         getConfig().options().copyDefaults(true);
         saveConfig();
