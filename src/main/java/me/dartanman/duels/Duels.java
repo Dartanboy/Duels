@@ -9,6 +9,7 @@ import me.dartanman.duels.listeners.GameListener;
 import me.dartanman.duels.listeners.StatsListener;
 import me.dartanman.duels.stats.StatisticsManager;
 import me.dartanman.duels.stats.db.DatabaseType;
+import me.dartanman.duels.utils.PapiHook;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -24,6 +25,11 @@ public class Duels extends JavaPlugin
     {
         int pluginId = 12801;
         Metrics metrics = new Metrics(this, pluginId);
+
+        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null)
+        {
+            new PapiHook(this).register();
+        }
 
         getConfig().options().copyDefaults(true);
         saveConfig();
