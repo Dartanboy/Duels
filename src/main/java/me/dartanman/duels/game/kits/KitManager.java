@@ -3,6 +3,7 @@ package me.dartanman.duels.game.kits;
 import me.dartanman.duels.Duels;
 import me.dartanman.duels.utils.ItemSerializationUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -112,6 +113,23 @@ public class KitManager
         ItemStack chestplate = player.getInventory().getChestplate();
         ItemStack leggings = player.getInventory().getLeggings();
         ItemStack boots = player.getInventory().getBoots();
+
+        if(helmet == null)
+        {
+            helmet = new ItemStack(Material.AIR);
+        }
+        if(chestplate == null)
+        {
+            chestplate = new ItemStack(Material.AIR);
+        }
+        if(leggings == null)
+        {
+            leggings = new ItemStack(Material.AIR);
+        }
+        if(boots == null)
+        {
+            boots = new ItemStack(Material.AIR);
+        }
 
         ItemStack[] armor = {boots, leggings, chestplate, helmet};
         ItemStack[] inventory = player.getInventory().getContents();
