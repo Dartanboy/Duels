@@ -45,10 +45,10 @@ public class PapiHook extends PlaceholderExpansion
     @Override
     public String onRequest(OfflinePlayer player, String params) {
 
-        if(params.toLowerCase().startsWith("duels_top_wins_"))
+        if(params.toLowerCase().startsWith("top_wins_"))
         {
             String[] split = params.split("_");
-            String num = split[3];
+            String num = split[2];
             int place = -1;
             try
             {
@@ -75,10 +75,10 @@ public class PapiHook extends PlaceholderExpansion
             }
             return ("N/A");
         }
-        else if(params.toLowerCase().startsWith("duels_top_kills_"))
+        else if(params.toLowerCase().startsWith("top_kills_"))
         {
             String[] split = params.split("_");
-            String num = split[3];
+            String num = split[2];
             int place = -1;
             try
             {
