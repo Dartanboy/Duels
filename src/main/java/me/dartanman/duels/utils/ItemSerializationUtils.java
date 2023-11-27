@@ -5,6 +5,9 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.potion.PotionData;
+import org.bukkit.potion.PotionType;
 
 public class ItemSerializationUtils
 {
@@ -53,6 +56,14 @@ public class ItemSerializationUtils
             if(meta.isUnbreakable())
             {
                 metaStr = metaStr + " unbreakable:true";
+            }
+            if(meta instanceof PotionMeta pMeta)
+            {
+                PotionData data = pMeta.getBasePotionData();
+                PotionType pType = data.getType();
+                boolean extended = data.isExtended();
+                boolean upgraded = data.isUpgraded();
+                metaStr = metaStr + " potion:" + pType + "/extended/" + extended + "/upgraded/" + upgraded;
             }
 
             metaStr = metaStr.strip();
@@ -112,6 +123,16 @@ public class ItemSerializationUtils
                     {
                         meta.setUnbreakable(true);
                     }
+                }
+                else if(str.startsWith("potion:"))
+                {
+                    String[] matcher = str.split(":");
+                    String[] info = matcher[1].split("/");
+                    PotionType potionType = PotionType.valueOf(info[0]);
+                    boolean extended = Boolean.parseBoolean(info[2]);
+                    boolean upgraded = Boolean.parseBoolean(info[4]);
+                    PotionData data = new PotionData(potionType, extended, upgraded);
+                    ((PotionMeta) meta).setBasePotionData(data);
                 }
                 else if(str.contains(":"))
                 {
