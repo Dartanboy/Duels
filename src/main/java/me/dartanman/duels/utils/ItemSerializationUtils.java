@@ -128,7 +128,7 @@ public class ItemSerializationUtils
                 {
                     String[] matcher = str.split(":");
                     String[] info = matcher[1].split("/");
-                    PotionType potionType = PotionType.valueOf(info[0]);
+                    PotionType potionType = PotionType.valueOf(info[0].toUpperCase());
                     boolean extended = Boolean.parseBoolean(info[2]);
                     boolean upgraded = Boolean.parseBoolean(info[4]);
                     PotionData data = new PotionData(potionType, extended, upgraded);
