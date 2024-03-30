@@ -1,9 +1,9 @@
 name: Duels
 author: Dartanman
 main: me.dartanman.duels.Duels
-softdepend: [PlaceholderAPI]
+softdepend: [PlaceholderAPI, Multiverse-Core]
 version: ${project.version}
-api-version: 1.19
+api-version: 1.20
 commands:
   duel:
     description: Duels base command
