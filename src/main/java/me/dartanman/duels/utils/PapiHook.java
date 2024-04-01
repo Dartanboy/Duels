@@ -105,6 +105,18 @@ public class PapiHook extends PlaceholderExpansion
             }
             return ("N/A");
         }
+        else if(params.equalsIgnoreCase("your_kills"))
+        {
+            StatisticsDatabase db = plugin.getStatisticsManager().getStatsDB();
+            int kills = db.getKills(player.getUniqueId());
+            return kills + "";
+        }
+        else if(params.equalsIgnoreCase("your_wins"))
+        {
+            StatisticsDatabase db = plugin.getStatisticsManager().getStatsDB();
+            int wins = db.getWins(player.getUniqueId());
+            return wins + "";
+        }
 
 
         return null; // Placeholder is unknown by the Expansion
