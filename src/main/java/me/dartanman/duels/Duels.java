@@ -1,5 +1,6 @@
 package me.dartanman.duels;
 
+import de.tr7zw.changeme.nbtapi.NBT;
 import me.dartanman.duels.commands.DuelTabCompleter;
 import me.dartanman.duels.game.kits.KitManager;
 import me.dartanman.duels.listeners.ArenaListener;
@@ -25,6 +26,12 @@ public class Duels extends JavaPlugin
     {
         int pluginId = 12801;
         Metrics metrics = new Metrics(this, pluginId);
+
+        if (!NBT.preloadApi()) {
+            getLogger().warning("NBT-API wasn't initialized properly, disabling Duels!");
+            getPluginLoader().disablePlugin(this);
+            return;
+        }
 
         if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null)
         {
