@@ -8,5 +8,4 @@
 *.prefs
 *.jar
 *.iml
-Duels.iml
 /target/*
