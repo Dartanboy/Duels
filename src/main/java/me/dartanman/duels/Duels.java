@@ -14,6 +14,8 @@ import me.dartanman.duels.utils.PapiHook;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.concurrent.Callable;
+
 public class Duels extends JavaPlugin
 {
 
@@ -55,6 +57,17 @@ public class Duels extends JavaPlugin
         getServer().getPluginManager().registerEvents(new ArenaListener(this), this);
         getServer().getPluginManager().registerEvents(new GameListener(this), this);
         getServer().getPluginManager().registerEvents(new StatsListener(this), this);
+
+        setupCustomCharts(metrics);
+    }
+
+    private void setupCustomCharts(Metrics metrics) {
+        metrics.addCustomChart(new Metrics.SingleLineChart("arenas", new Callable<Integer>() {
+            @Override
+            public Integer call() throws Exception {
+                return arenaManager.getArenaList().size();
+            }
+        }));
     }
 
     private void setupStatisticsManager()
