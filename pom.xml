@@ -6,7 +6,7 @@
 
     <groupId>me.dartanman</groupId>
     <artifactId>Duels</artifactId>
-    <version>4.0.1</version>
+    <version>4.0.2</version>
 
     <repositories>
         <repository>
