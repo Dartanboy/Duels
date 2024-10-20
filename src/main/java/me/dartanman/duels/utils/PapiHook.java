@@ -127,11 +127,17 @@ public class PapiHook extends PlaceholderExpansion
                 ArenaManager arenaManager = plugin.getArenaManager();
                 Arena arena = arenaManager.getArena(onlinePlayer);
                 if(arena != null) {
-                    Player target;
+                    Player target = null;
                     if(arena.getPlayerOne().equals(player.getUniqueId())) {
-                        target = Bukkit.getPlayer(arena.getPlayerTwo());
+                        UUID uuid = arena.getPlayerTwo();
+                        if (uuid != null) {
+                            target = Bukkit.getPlayer(uuid);
+                        }
                     } else {
-                        target = Bukkit.getPlayer(arena.getPlayerOne());
+                        UUID uuid = arena.getPlayerOne();
+                        if (uuid != null) {
+                            target = Bukkit.getPlayer(uuid);
+                        }
                     }
 
                     if (target != null) {
