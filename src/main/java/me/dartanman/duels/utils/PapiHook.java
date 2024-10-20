@@ -2,8 +2,12 @@ package me.dartanman.duels.utils;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import me.dartanman.duels.Duels;
+import me.dartanman.duels.game.arenas.Arena;
+import me.dartanman.duels.game.arenas.ArenaManager;
 import me.dartanman.duels.stats.db.StatisticsDatabase;
+import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.LinkedHashMap;
@@ -39,7 +43,8 @@ public class PapiHook extends PlaceholderExpansion
 
     @Override
     public boolean persist() {
-        return true; // This is required or else PlaceholderAPI will unregister the Expansion on reload
+        // This is required or else PlaceholderAPI will unregister the Expansion on reload
+        return true;
     }
 
     @Override
@@ -116,9 +121,30 @@ public class PapiHook extends PlaceholderExpansion
             StatisticsDatabase db = plugin.getStatisticsManager().getStatsDB();
             int wins = db.getWins(player.getUniqueId());
             return wins + "";
+        } else if(params.equalsIgnoreCase("opponent_name"))
+        {
+            if(player instanceof Player onlinePlayer) {
+                ArenaManager arenaManager = plugin.getArenaManager();
+                Arena arena = arenaManager.getArena(onlinePlayer);
+                if(arena != null) {
+                    Player target;
+                    if(arena.getPlayerOne().equals(player.getUniqueId())) {
+                        target = Bukkit.getPlayer(arena.getPlayerTwo());
+                    } else {
+                        target = Bukkit.getPlayer(arena.getPlayerOne());
+                    }
+
+                    if (target != null) {
+                        return target.getName();
+                    } else {
+                        return "None";
+                    }
+                }
+            }
+
         }
 
-
-        return null; // Placeholder is unknown by the Expansion
+        // Placeholder is unknown by the Expansion
+        return null;
     }
 }
