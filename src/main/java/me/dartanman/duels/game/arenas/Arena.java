@@ -193,6 +193,9 @@ public class Arena
 
     public UUID getPlayerTwo()
     {
+        if(players.size() == 1) {
+            return null;
+        }
         return players.get(1);
     }
 
