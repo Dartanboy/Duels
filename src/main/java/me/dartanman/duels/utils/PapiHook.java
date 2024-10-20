@@ -139,9 +139,12 @@ public class PapiHook extends PlaceholderExpansion
                     } else {
                         return "None";
                     }
+                } else {
+                    return "None";
                 }
+            } else {
+                return "None";
             }
-
         }
 
         // Placeholder is unknown by the Expansion
