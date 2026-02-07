@@ -52,11 +52,11 @@ Kits:
   '0':
     Name: Default
     Armor:
-      Helmet: '{Count:1b,id:"minecraft:iron_helmet",tag:{Damage:0}}'
-      Chestplate: '{Count:1b,id:"minecraft:iron_chestplate",tag:{Damage:0}}'
-      Leggings: '{Count:1b,id:"minecraft:iron_leggings",tag:{Damage:0}}'
-      Boots: '{Count:1b,id:"minecraft:iron_boots",tag:{Damage:0}}'
+      Helmet: '{DataVersion:4671,count:1,id:"minecraft:iron_helmet"}'
+      Chestplate: '{DataVersion:4671,count:1,id:"minecraft:iron_chestplate"}'
+      Leggings: '{DataVersion:4671,count:1,id:"minecraft:iron_leggings"}'
+      Boots: '{DataVersion:4671,count:1,id:"minecraft:iron_boots"}'
     Inventory:
-      - '{Count:1b,id:"minecraft:iron_sword",tag:{Damage:0}}'
-      - '{Count:64b,id:"minecraft:bread"}'
+      - '{DataVersion:4671,count:1,id:"minecraft:iron_sword"}'
+      - '{DataVersion:4671,count:64,id:"minecraft:bread"}'
 Arenas:
