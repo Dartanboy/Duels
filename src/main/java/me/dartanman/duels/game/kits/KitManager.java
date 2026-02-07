@@ -2,6 +2,7 @@ package me.dartanman.duels.game.kits;
 
 import me.dartanman.duels.Duels;
 import me.dartanman.duels.utils.ItemSerializationUtils;
+import me.dartanman.duels.utils.PaperUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -135,10 +136,17 @@ public class KitManager
         ItemStack[] inventory = player.getInventory().getContents();
 
         // ignore armor
-        inventory[inventory.length - 2] = null;
-        inventory[inventory.length - 3] = null;
-        inventory[inventory.length - 4] = null;
-        inventory[inventory.length - 5] = null;
+        if (PaperUtils.isPaperServer()) {
+            inventory[inventory.length - 4] = null;
+            inventory[inventory.length - 5] = null;
+            inventory[inventory.length - 6] = null;
+            inventory[inventory.length - 7] = null;
+        } else {
+            inventory[inventory.length - 2] = null;
+            inventory[inventory.length - 3] = null;
+            inventory[inventory.length - 4] = null;
+            inventory[inventory.length - 5] = null;
+        }
 
         plugin.getConfig().set("Kits." + id + ".Name", kitName);
         plugin.getConfig().set("Kits." + id + ".Armor.Helmet", ItemSerializationUtils.serialize(helmet));
