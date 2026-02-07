@@ -48,6 +48,9 @@ Messages:
     - '&eKills&f: &6<kills>'
     - '&eDeaths&f: &6<deaths>'
     - '&e============='
+  Update-Check-Good: '&aYou are using Duels Version &e<version>&a. This is the latest version!'
+  Update-Check-Bad: '&cYou are using Duels Version &e<version>&c, but there is an update available! Download it at &ehttps://www.spigotmc.org/resources/duels.44820/'
+  Update-Check-Failed: '&cVersion Check failed; is your server offline?'
 Kits:
   '0':
     Name: Default
